@@ -118,7 +118,7 @@ MWP.MapWaypointList = {
             vignetteScan = function (n) return n:match("Gorok") end,
             { 63.4, 79.4, "Gorok Spawn" },
             { 22.8, 66.4, "Gorok Spawn" },
-            { 64.8, 63.0, "Gorok Spawn" },
+            { 64.8, 53.0, "Gorok Spawn" },
             { 51.8, 50.6, "Gorok Spawn" },
             { 58.0, 18.4, "Gorok Spawn" },
         },
