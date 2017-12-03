@@ -14,6 +14,9 @@ MWP:SetScript("OnEvent", function (f, e, ...) if f[e] then f[e](f, ...) end end)
 local HBD = LibStub("HereBeDragons-1.0")
 
 function MWP:CollectedMount(id)
+    if self.db.forceCollected[id] ~= nil then
+        return self.db.forceCollected[id]
+    end
     local collected = select(11, C_MountJournal.GetMountInfoByID(id))
     return collected
 end
@@ -35,22 +38,30 @@ MWP.MapWaypointList = {
     [495] = {
         {
             check = function () return MWP:MissingMounts(265) end,
-            { 31.6, 69.7, "TLPD Lake Spawn" },
-            { 35.3, 76.8, "TLPD Waterfall Spawn" },
-            { 51.1, 71.2, "TLPD Brunnhildar Spawn" },
-            { 52.2, 35.0, "TLPD Ulduar Spawn" },
+            { 31.6, 69.7, "TLPD Bor's Breath" },
+            { 35.3, 76.8, "TLPD Bor's Fall" },
+            { 51.1, 71.2, "TLPD Brunnhildar" },
+            { 52.2, 35.0, "TLPD Ulduar" },
         }
+    },
+
+
+    -- Abyssal Depths, Vashj'ir
+    [614] = {
+        {
+            check = function () return MWP:MissingMounts(420) end,
+            {  41.0, 74.0, "Poseidus Spawn" },
+        },
     },
 
     -- Shimmering Expanse, Vashj'ir
     [615] = {
         {
             check = function () return MWP:MissingMounts(420) end,
-            {  65.8, 41.4, "Poseidus Spawn" },
-            {  58.4, 82.2, "Poseidus Spawn" },
-            {  56.8, 81.0, "Poseidus Spawn" },
-            {  45.4, 49.8, "Poseidus Spawn" },
-            {  39.6, 68.2, "Poseidus Spawn" },
+            {  66.0, 43.0, "Poseidus Spawn" },
+            {  58.0, 83.0, "Poseidus Spawn" },
+            {  46.0, 50.0, "Poseidus Spawn" },
+            {  40.0, 67.0, "Poseidus Spawn" },
         }
     },
 
@@ -58,11 +69,11 @@ MWP.MapWaypointList = {
     [640] = {
         {
             check = function () return MWP:MissingMounts(393) end,
-            { 42.6, 48.2, "Aeonaxx Spawn" },
-            { 45.4, 43.4, "Aeonaxx Spawn" },
-            { 51.6, 42.8, "Aeonaxx Spawn" },
-            { 43.0, 59.0, "Aeonaxx Spawn" },
-            { 51.8, 63,4, "Aeonaxx Spawn" },
+            { 42.6, 48.2, "Aeonaxx Spawn W" },
+            { 45.4, 43.4, "Aeonaxx Spawn NW" },
+            { 51.6, 42.8, "Aeonaxx Spawn NE" },
+            { 43.0, 59.0, "Aeonaxx Spawn SW" },
+            { 51.8, 63.4, "Aeonaxx Spawn S" },
         }
     },
 
@@ -124,6 +135,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
+            dontclear = true,
             { 51.0, 19.9, "Edge of Reality" },
             { 52.3, 18.3, "Edge of Reality" },
             { 53.0, 17.0, "Edge of Reality" },
@@ -144,10 +156,13 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 47.0, 48.0, "Edge of Reality" },
+            dontclear = true,
             { 39.7, 55.4, "Edge of Reality" },
-            { 51.9, 41.2, "Edge of Reality" },
             { 46.2, 52.6, "Edge of Reality" },
+            { 47.0, 48.0, "Edge of Reality" },
+            { 50.1, 32.4, "Edge of Reality" },
+            { 51.9, 41.2, "Edge of Reality" },
+            { 52.6, 34.6, "Edge of Reality" },
         }
     },
 
@@ -165,6 +180,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
+            dontclear = true,
             { 49.6, 71.6, "Edge of Reality" },
             { 43.2, 71.0, "Edge of Reality" },
             { 50.7, 72.5, "Edge of Reality" },
@@ -179,6 +195,7 @@ MWP.MapWaypointList = {
     [948] = {
         {
             check = function () return MWP:MissingMounts(682) end,
+            dontclear = true,
             { 47.0, 20.0, "Edge of Reality" },
             { 50.4,  6.1, "Edge of Reality" },
             { 60.8, 11.2, "Edge of Reality" },
@@ -199,6 +216,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
+            dontclear = true,
             { 56.0, 40.0, "Edge of Reality" },
             { 54.0, 45.0, "Edge of Reality" },
             { 51.6, 38.8, "Edge of Reality" },
@@ -229,6 +247,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
+            dontclear = true,
             { 57.3, 26.7, "Edge of Reality" },
             { 40.5, 47.6, "Edge of Reality" },
             { 45.9, 31.4, "Edge of Reality" },
@@ -408,12 +427,16 @@ MWP.MapWaypointList = {
     },
 }
 
+local defaults = { ['forceCollected'] = {} }
 
 function MWP:PLAYER_ENTERING_WORLD()
+    self.db = MountWayPointsDB or CopyTable(defaults)
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
     self:RegisterEvent("WORLD_MAP_UPDATE")
     self:RegisterEvent("VIGNETTE_ADDED")
+    SlashCmdList["MountWaypoints"] = function (...) self:SlashCommand(...) end
+    SLASH_MountWaypoints1 = "/mwp"
 end
 
 function MWP:WORLD_MAP_UPDATE()
@@ -439,9 +462,10 @@ function MWP:WORLD_MAP_UPDATE()
                 tinsert(self.currentVignetteScans, set.vignetteScan)
             end
             for _,p in ipairs(set) do
+                local opts = { title = p[3] }
+                if set.dontclear then opts.cleardistance = 0 end
                 local uid = TomTom:AddMFWaypoint(
-                        mapID, nil, p[1]/100.0, p[2]/100.0,
-                        { title = p[3], persistent = false }
+                        mapID, nil, p[1]/100.0, p[2]/100.0, opts
                     )
                 tinsert(self.currentWaypoints, uid)
             end
@@ -485,6 +509,30 @@ function MWP:VIGNETTE_ADDED(id)
         SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
         PlaySound(11466)
     end
+end
+
+function MWP:Reset()
+    self.currentMapID = nil
+    self:WORLD_MAP_UPDATE()
+end
+
+function MWP:SlashCommand(argstr)
+    local args = { strsplit(" ", argstr) }
+    local cmd = table.remove(args, 1)
+
+    if cmd == "show" then
+        self.db.forceCollected[tonumber(args[1])] = false
+        self:Reset()
+    elseif cmd == "hide" then
+        self.db.forceCollected[tonumber(args[1])] = true
+        self:Reset()
+    elseif cmd == "reset" then
+        self.db.forceCollected[tonumber(args[1])] = nil
+        self:Reset()
+    elseif cmd == "refresh" then
+        self:Reset()
+    end
+    return true
 end
 
 MWP:RegisterEvent("PLAYER_ENTERING_WORLD")
