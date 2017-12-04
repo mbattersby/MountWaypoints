@@ -138,7 +138,6 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 51.0, 19.9, "Edge of Reality" },
             { 52.3, 18.3, "Edge of Reality" },
             { 53.0, 17.0, "Edge of Reality" },
@@ -159,7 +158,6 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 39.7, 55.4, "Edge of Reality" },
             { 46.2, 52.6, "Edge of Reality" },
             { 47.0, 48.0, "Edge of Reality" },
@@ -183,7 +181,6 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 49.6, 71.6, "Edge of Reality" },
             { 43.2, 71.0, "Edge of Reality" },
             { 50.7, 72.5, "Edge of Reality" },
@@ -198,7 +195,6 @@ MWP.MapWaypointList = {
     [948] = {
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 47.0, 20.0, "Edge of Reality" },
             { 50.4,  6.1, "Edge of Reality" },
             { 60.8, 11.2, "Edge of Reality" },
@@ -219,7 +215,6 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 56.0, 40.0, "Edge of Reality" },
             { 54.0, 45.0, "Edge of Reality" },
             { 51.6, 38.8, "Edge of Reality" },
@@ -250,7 +245,6 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            dontclear = true,
             { 57.3, 26.7, "Edge of Reality" },
             { 40.5, 47.6, "Edge of Reality" },
             { 45.9, 31.4, "Edge of Reality" },
@@ -465,7 +459,7 @@ function MWP:WORLD_MAP_UPDATE()
                 tinsert(self.currentVignetteScans, set.vignetteScan)
             end
             for _,p in ipairs(set) do
-                local opts = { title = p[3] }
+                local opts = { title = p[3], cleardistance = 20 }
                 if set.dontclear then opts.cleardistance = 0 end
                 local uid = TomTom:AddMFWaypoint(
                         mapID, nil, p[1]/100.0, p[2]/100.0, opts
