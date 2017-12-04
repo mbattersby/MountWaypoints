@@ -14,6 +14,9 @@ MWP:SetScript("OnEvent", function (f, e, ...) if f[e] then f[e](f, ...) end end)
 local HBD = LibStub("HereBeDragons-1.0")
 
 function MWP:CollectedMount(id)
+    if self.db.forceCollected.all ~= nil then
+        return self.db.forceCollected.all
+    end
     if self.db.forceCollected[id] ~= nil then
         return self.db.forceCollected[id]
     end
@@ -521,13 +524,27 @@ function MWP:SlashCommand(argstr)
     local cmd = table.remove(args, 1)
 
     if cmd == "show" then
-        self.db.forceCollected[tonumber(args[1])] = false
+        if args[1] ~= 'all' then
+            args[1] = tonumber(args[1])
+        end
+        if args[1] then
+            self.db.forceCollected[args[1]] = false
+        end
         self:Reset()
     elseif cmd == "hide" then
-        self.db.forceCollected[tonumber(args[1])] = true
+        if args[1] ~= 'all' then
+            args[1] = tonumber(args[1])
+        end
+        if args[1] then
+            self.db.forceCollected[args[1]] = true
+        end
         self:Reset()
     elseif cmd == "reset" then
-        self.db.forceCollected[tonumber(args[1])] = nil
+        if args[1] == 'all' then
+            wipe(self.db.forceCollected)
+        else
+            self.db.forceCollected[args[1]] = nil
+        end
         self:Reset()
     elseif cmd == "refresh" then
         self:Reset()
