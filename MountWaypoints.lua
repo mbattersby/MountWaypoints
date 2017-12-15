@@ -207,11 +207,11 @@ MWP.MapWaypointList = {
         {
             check = function () return MWP:MissingMounts(655) end,
             vignetteScan = function (n) return n:match("Poundfist") end,
-            { 50, 41, "Poundfist Spawn" },
-            { 42, 26, "Poundfist Spawn" },
-            { 43, 55, "Poundfist Spawn" },
-            { 45, 46, "Poundfist Spawn" },
-            { 47, 54, "Poundfist Spawn" },
+            { 47.0, 54.1, "Poundfist Spawn" },
+            { 43.2, 55.5, "Poundfist Spawn" },
+            { 45.4, 47.5, "Poundfist Spawn" },
+            { 51.4, 43.1, "Poundfist Spawn" },
+            { 42.0, 25.0, "Poundfist Spawn" },
         },
         {
             check = function () return MWP:MissingMounts(682) end,
