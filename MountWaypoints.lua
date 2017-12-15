@@ -138,10 +138,10 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 51.0, 19.9, "Edge of Reality" },
-            { 52.3, 18.3, "Edge of Reality" },
-            { 53.0, 17.0, "Edge of Reality" },
-            { 47.7, 27.5, "Edge of Reality" },
+            { 51.10, 19.86, "Edge of Reality" },
+            { 52.40, 18.18, "Edge of Reality" },
+            { 53.80, 17.46, "Edge of Reality" },
+            { 47.70, 27.57, "Edge of Reality" },
         }
     },
 
@@ -158,12 +158,13 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 39.7, 55.4, "Edge of Reality" },
-            { 46.2, 52.6, "Edge of Reality" },
-            { 47.0, 48.0, "Edge of Reality" },
-            { 50.1, 32.4, "Edge of Reality" },
-            { 51.9, 41.2, "Edge of Reality" },
-            { 52.6, 34.6, "Edge of Reality" },
+            { 39.88, 55.61, "Edge of Reality" },
+            { 46.26, 52.56, "Edge of Reality" },
+            { 47.16, 48.82, "Edge of Reality" },
+            { 52.14, 41.13, "Edge of Reality" },
+            { 52.30, 25.00, "Edge of Reality" },
+            { 52.62, 34.62, "Edge of Reality" },
+            { 50.96, 32.41, "Edge of Reality" },
         }
     },
 
@@ -181,13 +182,12 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 49.6, 71.6, "Edge of Reality" },
-            { 43.2, 71.0, "Edge of Reality" },
-            { 50.7, 72.5, "Edge of Reality" },
-            { 41.9, 75.7, "Edge of Reality" },
-            { 48.7, 69.9, "Edge of Reality" },
-            { 50.4, 71.5, "Edge of Reality" },
-            { 46.6, 70.0, "Edge of Reality" },
+            { 41.90, 75.70, "Edge of Reality" },
+            { 43.79, 70.96, "Edge of Reality" },
+            { 48.95, 70.26, "Edge of Reality" },
+            { 50.33, 71.53, "Edge of Reality" },
+            { 50.90, 72.50, "Edge of Reality" },
+            { 51.68, 74.85, "Edge of Reality" },
         }
     },
 
@@ -195,10 +195,10 @@ MWP.MapWaypointList = {
     [948] = {
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 47.0, 20.0, "Edge of Reality" },
+            { 36.43, 18.3, "Edge of Reality" },
+            { 47.0, 20.1, "Edge of Reality" },
             { 50.4,  6.1, "Edge of Reality" },
-            { 60.8, 11.2, "Edge of Reality" },
-            { 36.5, 18.2, "Edge of Reality" },
+            { 60.8, 11.23, "Edge of Reality" },
         },
     },
 
@@ -215,10 +215,10 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 56.0, 40.0, "Edge of Reality" },
-            { 54.0, 45.0, "Edge of Reality" },
             { 51.6, 38.8, "Edge of Reality" },
-            { 43.2, 34.2, "Edge of Reality" },
+            { 54.0, 45.8, "Edge of Reality" },
+            { 56.0, 40.7, "Edge of Reality" },
+            { 43.3, 34.2, "Edge of Reality" },
         }
     },
 
@@ -245,9 +245,9 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(682) end,
-            { 57.3, 26.7, "Edge of Reality" },
             { 40.5, 47.6, "Edge of Reality" },
-            { 45.9, 31.4, "Edge of Reality" },
+            { 44.0, 30.7, "Edge of Reality" },
+            { 57.3, 26.7, "Edge of Reality" },
         }
     },
 
