@@ -11,7 +11,7 @@ local MWP = MountWaypoints
 MWP:SetScript("OnEvent", function (f, e, ...) if f[e] then f[e](f, ...) end end)
 
 -- TomTom requires HereBeDragons so we must have it already
-local HBD = LibStub("HereBeDragons-1.0")
+local HBD = LibStub("HereBeDragons-2.0")
 
 function MWP:CollectedMount(id)
     if self.db.forceCollected.all ~= nil then
@@ -38,7 +38,7 @@ end
 
 MWP.MapWaypointList = {
     -- Storm Peaks
-    [495] = {
+    [120] = {
         {
             check = function () return MWP:MissingMounts(265) end,
             { 31.6, 69.7, "TLPD Bor's Breath" },
@@ -50,7 +50,7 @@ MWP.MapWaypointList = {
 
 
     -- Abyssal Depths, Vashj'ir
-    [614] = {
+    [204] = {
         {
             check = function () return MWP:MissingMounts(420) end,
             {  41.0, 74.0, "Poseidus Spawn" },
@@ -58,7 +58,7 @@ MWP.MapWaypointList = {
     },
 
     -- Shimmering Expanse, Vashj'ir
-    [615] = {
+    [205] = {
         {
             check = function () return MWP:MissingMounts(420) end,
             {  66.0, 43.0, "Poseidus Spawn" },
@@ -69,7 +69,7 @@ MWP.MapWaypointList = {
     },
 
     -- Deepholm
-    [640] = {
+    [207] = {
         {
             check = function () return MWP:MissingMounts(393) end,
             { 42.6, 48.2, "Aeonaxx Spawn W" },
@@ -81,7 +81,7 @@ MWP.MapWaypointList = {
     },
 
     -- The Jade Forest
-    [806] = {
+    [371] = {
         {
             check = function () return MWP:MissingMounts(534, 535, 536) end,
             vignetteScan = function (n) return n:match("Warbringer") end,
@@ -90,7 +90,7 @@ MWP.MapWaypointList = {
     },
 
     -- Kun-Lai Summit
-    [809] = {
+    [379] = {
         {
             check = function () return MWP:MissingMounts(534, 535, 536) end,
             vignetteScan = function (n) return n:match("Warbringer") end,
@@ -99,7 +99,7 @@ MWP.MapWaypointList = {
     },
 
     -- Townlong Steppes
-    [810] = {
+    [388] = {
         {
             check = function () return MWP:MissingMounts(534, 535, 536) end,
             vignetteScan = function (n) return n:match("Warbringer") end,
@@ -108,7 +108,7 @@ MWP.MapWaypointList = {
     },
 
     -- Krasarang Wilds, only Slate spawns there
-    [857] = {
+    [418] = {
         {
             check = function () return MWP:MissingMounts(535) end,
             vignetteScan = function (n) return n:match("Warbringer") end,
@@ -117,7 +117,7 @@ MWP.MapWaypointList = {
     },
 
     -- Dread Wastes
-    [858] = {
+    [422] = {
         {
             check = function () return MWP:MissingMounts(534, 535, 536) end,
             vignetteScan = function (n) return n:match("Warbringer") end,
@@ -126,7 +126,7 @@ MWP.MapWaypointList = {
     },
 
     -- Frostfire Ridge --
-    [941] = {
+    [525] = {
         {
             check = function () return MWP:MissingMounts(627) end,
             vignetteScan = function (n) return n:match("Gorok") end,
@@ -146,7 +146,7 @@ MWP.MapWaypointList = {
     },
 
     -- Talador --
-    [946] = {
+    [535] = {
         {
             check = function () return MWP:MissingMounts(630) end,
             vignetteScan = function (n) return n:match("Silthide") end,
@@ -169,7 +169,7 @@ MWP.MapWaypointList = {
     },
 
     -- Shadowmoon Valley (Draenor) --
-    [947] = {
+    [539] = {
         {
             check = function () return MWP:MissingMounts(636) end,
             vignetteScan = function (n) return n:match("Pathrunner") end,
@@ -192,7 +192,7 @@ MWP.MapWaypointList = {
     },
 
     -- Spires of Arak
-    [948] = {
+    [542] = {
         {
             check = function () return MWP:MissingMounts(682) end,
             { 36.43, 18.3, "Edge of Reality" },
@@ -203,7 +203,7 @@ MWP.MapWaypointList = {
     },
 
     -- Gorgrond
-    [949] = {
+    [543] = {
         {
             check = function () return MWP:MissingMounts(655) end,
             vignetteScan = function (n) return n:match("Poundfist") end,
@@ -223,7 +223,7 @@ MWP.MapWaypointList = {
     },
 
     -- Nagrand (Draenor)
-    [950] = {
+    [550] = {
         {
             check = function () return MWP:MissingMounts(612) end,
             vignetteScan = function (n) return n:match("Nakk") end,
@@ -252,7 +252,7 @@ MWP.MapWaypointList = {
     },
 
     -- Aszuna (Long-Forgotten Hippogryph)
-    [1015] = {
+    [630] = {
         {
             check = function () return MWP:MissingMounts(802) end,
             { 29.90, 26.55, "(on island)" },
@@ -370,37 +370,14 @@ MWP.MapWaypointList = {
         }
     },
     -- Korkrun
-    [1135] = {
+    [830] = {
         {
             check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48667) end,
             { 70.5, 33.7, "Naroua (Fel-Spotted Egg)" },
         },
     },
-    -- Antoran Wastes
-    [1171] = {
-        {
-            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48812) end,
-            { 64.3, 48.2, "Varga (Fel-Spotted Egg)" },
-        },
-        {
-            check = function () return MWP:MissingMounts(979) and not IsQuestFlaggedCompleted(49183) end,
-            { 61.7, 37.2, "Blistermaw (Crimson Slavermaw)" },
-        },
-        {
-            check = function () return MWP:MissingMounts(955) and not IsQuestFlaggedCompleted(48821) end,
-            { 63.1, 25.2, "Houndmaster Kerrax (Vile Fiend)" },
-        },
-        {
-            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48810) end,
-            { 53.1, 35.8, "Vrax'thul (Biletooth Gnasher)" },
-        },
-        {
-            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48809) end,
-            { 65.6, 26.6, "Puscilla (Biletooth Gnasher)" },
-        },
-    },
     -- Mac'aree
-    [1170] = {
+    [882] = {
         {
             check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48697) end,
             { 38.7, 55.8, "Kaara the Pale (Fel-Spotted Egg)" },
@@ -422,6 +399,29 @@ MWP.MapWaypointList = {
             { 49.7, 9.9, "Skreeg the Devourer (Acid Belcher)" },
         },
     },
+    -- Antoran Wastes
+    [885] = {
+        {
+            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48812) end,
+            { 64.3, 48.2, "Varga (Fel-Spotted Egg)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(979) and not IsQuestFlaggedCompleted(49183) end,
+            { 61.7, 37.2, "Blistermaw (Crimson Slavermaw)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(955) and not IsQuestFlaggedCompleted(48821) end,
+            { 63.1, 25.2, "Houndmaster Kerrax (Vile Fiend)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48810) end,
+            { 53.1, 35.8, "Vrax'thul (Biletooth Gnasher)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48809) end,
+            { 65.6, 26.6, "Puscilla (Biletooth Gnasher)" },
+        },
+    },
 }
 
 local defaults = { ['forceCollected'] = {} }
@@ -430,13 +430,13 @@ function MWP:PLAYER_ENTERING_WORLD()
     self.db = MountWayPointsDB or CopyTable(defaults)
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
-    self:RegisterEvent("WORLD_MAP_UPDATE")
+    self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
     self:RegisterEvent("VIGNETTE_ADDED")
     SlashCmdList["MountWaypoints"] = function (...) self:SlashCommand(...) end
     SLASH_MountWaypoints1 = "/mwp"
 end
 
-function MWP:WORLD_MAP_UPDATE()
+function MWP:ZONE_CHANGED_NEW_AREA()
     local mapID = HBD:GetPlayerZone()
 
     if mapID == self.currentMapID then return end
@@ -510,7 +510,7 @@ end
 
 function MWP:Reset()
     self.currentMapID = nil
-    self:WORLD_MAP_UPDATE()
+    self:ZONE_CHANGED_NEW_AREA()
 end
 
 function MWP:SlashCommand(argstr)

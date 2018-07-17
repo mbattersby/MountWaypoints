@@ -1,6 +1,6 @@
-## Interface: 70200
+## Interface: 80000
 ## Title: MountWaypoints
-## Version: 1.0
+## Version: 8.0.0
 ## Author: Xodiv-Nagrand
 ## Email: mib@post.com
 ## Dependencies: TomTom
