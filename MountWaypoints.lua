@@ -431,7 +431,8 @@ function MWP:PLAYER_ENTERING_WORLD()
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
     self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-    self:RegisterEvent("VIGNETTE_ADDED")
+    self:RegisterEvent("VIGNETTES_UPDATED")
+    self:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
     SlashCmdList["MountWaypoints"] = function (...) self:SlashCommand(...) end
     SLASH_MountWaypoints1 = "/mwp"
 end
@@ -488,23 +489,31 @@ function MWP:Print(...)
     frame:AddMessage(msg)
 end
 
-function MWP:VIGNETTE_ADDED(id)
-    local x, y, name, iconid = C_Vignettes.GetVignetteInfoFromInstanceID(id)
+function MWP:VIGNETTE_MINIMAP_UPDATED(id)
+    local info = C_VignetteInfo.GetVignetteInfo(id)
+
+    if not info then return end
 
     local alert = false
 
     for _, checkFunc in ipairs(self.currentVignetteScans) do
-        if checkFunc(name) then
+        if checkFunc(info.name) then
             alert = true
         end
     end
 
     if alert == true then
-        local msg = format("MWP %s found", name)
+        local msg = format("MWP %s found", info.name)
 
         self:Print(msg)
         SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
         PlaySound(11466)
+    end
+end
+
+function MWP:VIGNETTES_UPDATED()
+    for _, id in ipairs(C_VignetteInfo.GetVignettes()) do
+        self:VIGNETTE_MINIMAP_UPDATED(id)
     end
 end
 
