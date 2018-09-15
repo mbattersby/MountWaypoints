@@ -462,8 +462,8 @@ function MWP:ZONE_CHANGED_NEW_AREA()
             for _,p in ipairs(set) do
                 local opts = { title = p[3], cleardistance = 20 }
                 if set.dontclear then opts.cleardistance = 0 end
-                local uid = TomTom:AddMFWaypoint(
-                        mapID, nil, p[1]/100.0, p[2]/100.0, opts
+                local uid = TomTom:AddWaypoint(
+                        mapID, p[1]/100.0, p[2]/100.0, opts
                     )
                 tinsert(self.currentWaypoints, uid)
             end
