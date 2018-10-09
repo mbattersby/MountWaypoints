@@ -38,33 +38,52 @@ end
 
 MWP.MapWaypointList = {
     -- Arathi Highlands
-    [45] = {
+    [14] = {
         {
-            check = function () return UnitFactionGroup('player') == 'Alliance' and MWP:MissingMounts(1173) end,
+            check = function ()
+                    return UnitFactionGroup('player') == 'Horde'
+                        and MWP:MissingMounts(1173)
+                end,
             { 49.27, 40.05, "Knight-Captain Aldrin (Broken Highland Mustang)" },
         },
         {
-            check = function () return MWP:MissingMounts(1183) end,
+            check = function ()
+                    return MWP:MissingMounts(1183)
+                        and not IsQuestFlaggedCompleted(53022)
+                end,
             { 57.15, 45.75, "Skullripper" },
         },
         {
-            check = function () return UnitFactionGroup('player') == 'Alliance' and MWP:MissingMounts(1174) end,
+            check = function ()
+                    return UnitFactionGroup('player') == 'Alliance'
+                        and MWP:MissingMounts(1174)
+                end,
             { 53.97, 56.96, "Doomrider Helgrim (Highland Mustang)" },
         },
         {
-            check = function () return MWP:MissingMounts(1185) end,
+            check = function ()
+                    return MWP:MissingMounts(1185)
+                end,
             { 67.48, 60.58, "Nimar the Slayer (Witherbark Direwing)" },
         },
         {
-            check = function () return MWP:MissingMounts(1180) end,
+            check = function ()
+                    return MWP:MissingMounts(1180)
+                end,
             { 67.06, 65.89, "Beastrider Kama (Swift Albino Raptor)" },
         },
         {
-            check = function () return UnitFactionGroup('player') == 'Alliance' and MWP:MissingMounts(1182) end,
+            check = function ()
+                    return UnitFactionGroup('player') == 'Alliance'
+                        and MWP:MissingMounts(1182)
+                end,
             { 33.44, 36.94, "Overseer Krix (Lil' Donkey - In Cave)" },
         },
         {
-            check = function () return UnitFactionGroup('player') == 'Horde' and MWP:MissingMounts(1182) end,
+            check = function ()
+                    return UnitFactionGroup('player') == 'Horde'
+                        and MWP:MissingMounts(1182)
+                end,
             { 27.46, 55.89, "Overseer Krix (Lil' Donkey - In Cave)" },
         },
     },
