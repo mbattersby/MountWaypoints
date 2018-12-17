@@ -11,7 +11,7 @@ local MWP = MountWaypoints
 MWP:SetScript("OnEvent", function (f, e, ...) if f[e] then f[e](f, ...) end end)
 
 -- TomTom requires HereBeDragons so we must have it already
-local HBD = LibStub("HereBeDragons-2.0")
+local HereBeDragons = LibStub("HereBeDragons-2.0")
 
 function MWP:CollectedMount(id)
     if self.db.forceCollected.all ~= nil then
@@ -85,6 +85,46 @@ MWP.MapWaypointList = {
                         and MWP:MissingMounts(1182)
                 end,
             { 27.46, 55.89, "Overseer Krix (Lil' Donkey - In Cave)" },
+        },
+    },
+
+    -- Darkshore
+    [62] = {
+        {
+            check = function ()
+                    return UnitFactionGroup('player') == 'Horde'
+                        and MWP:MissingMounts(1199)
+                end,
+            { 49.66, 24.93, "Blackpaw" },
+        },
+        {
+            check = function ()
+                    return MWP:MissingMounts(1200)
+                        and not IsQuestFlaggedCompleted(54696)
+                end,
+            { 56.44, 30.77, "Alash'anir (Ashenvale Chimaera)" },
+        },
+        {
+            check = function ()
+                    return MWP:MissingMounts(1201)
+                end,
+            vignetteScan = function (n) return n:match("Frightened Kodo") end,
+            { 41, 65, "Frightened Kodo" },
+        },
+        {
+            check = function ()
+                    return UnitFactionGroup('player') == 'Horde'
+                        and MWP:MissingMounts(1203)
+                        and not IsQuestFlaggedCompleted(54427)
+                end,
+            { 40.65, 73.33, "Athil Dewfire (Captured Umber Nightsaber)" },
+        },
+        {
+            check = function ()
+                    return UnitFactionGroup('player') == 'Horde'
+                        and MWP:MissingMounts(1205)
+                end,
+            { 39.77, 32.91, "Shadowclaw (Kaldorei Nightsaber)" },
         },
     },
 
@@ -477,19 +517,31 @@ MWP.MapWaypointList = {
 
 local defaults = { ['forceCollected'] = {} }
 
-function MWP:PLAYER_ENTERING_WORLD()
+function MWP:PLAYER_LOGIN()
     self.db = MountWayPointsDB or CopyTable(defaults)
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
+
+    self:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self:RegisterEvent("ZONE_CHANGED")
+    self:RegisterEvent("ZONE_CHANGED_INDOORS")
     self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
     self:RegisterEvent("VIGNETTES_UPDATED")
     self:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
+
+    self:UpdateZone()
+
     SlashCmdList["MountWaypoints"] = function (...) self:SlashCommand(...) end
     SLASH_MountWaypoints1 = "/mwp"
 end
 
-function MWP:ZONE_CHANGED_NEW_AREA()
-    local mapID = HBD:GetPlayerZone()
+function MWP:PLAYER_ENTERING_WORLD() self:UpdateZone() end
+function MWP:ZONE_CHANGED() self:UpdateZone() end
+function MWP:ZONE_CHANGED_INDOORS() self:UpdateZone() end
+function MWP:ZONE_CHANGED_NEW_AREA() self:UpdateZone() end
+
+function MWP:UpdateZone()
+    local mapID = C_Map.GetBestMapForUnit('player')
 
     if mapID == self.currentMapID then return end
 
@@ -521,6 +573,10 @@ function MWP:ZONE_CHANGED_NEW_AREA()
         end
     end 
 
+    -- HBD hasn't fired a timer even on login yet so we force an update
+    -- so the TomTom call doesn't error.
+
+    HereBeDragons.UpdateCurrentPosition()
     TomTom:SetClosestWaypoint()
 
 end
@@ -606,4 +662,4 @@ function MWP:SlashCommand(argstr)
     return true
 end
 
-MWP:RegisterEvent("PLAYER_ENTERING_WORLD")
+MWP:RegisterEvent("PLAYER_LOGIN")
