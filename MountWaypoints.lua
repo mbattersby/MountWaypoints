@@ -108,7 +108,6 @@ MWP.MapWaypointList = {
             check = function ()
                     return MWP:MissingMounts(1201)
                 end,
-            vignetteScan = function (n) return n:match("Frightened Kodo") end,
             { 41, 65, "Frightened Kodo" },
         },
         {
