@@ -92,6 +92,13 @@ MWP.MapWaypointList = {
     [62] = {
         {
             check = function ()
+                    return UnitFactionGroup('player') == 'Alliance'
+                        and MWP:MissingMounts(1199)
+                end,
+            { 49.66, 24.93, "Agathe Wyrmwood (Blackpaw)" },
+        },
+        {
+            check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and MWP:MissingMounts(1199)
                 end,
@@ -112,6 +119,14 @@ MWP.MapWaypointList = {
         },
         {
             check = function ()
+                    return UnitFactionGroup('player') == 'Alliance'
+                        and MWP:MissingMounts(1203)
+                        and not IsQuestFlaggedCompleted(54427)
+                end,
+            { 65, 20, "Moxo the Beheader (Captured Umber Nightsaber)" },
+        },
+        {
+            check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and MWP:MissingMounts(1203)
                         and not IsQuestFlaggedCompleted(54427)
@@ -124,6 +139,13 @@ MWP.MapWaypointList = {
                         and MWP:MissingMounts(1205)
                 end,
             { 39.77, 32.91, "Shadowclaw (Kaldorei Nightsaber)" },
+        },
+        {
+            check = function ()
+                    return UnitFactionGroup('player') == 'Alliance'
+                        and MWP:MissingMounts(1205)
+                end,
+            { 50.6, 32.4, "Croz Bloodrage (Kaldorei Nightsaber)" },
         },
     },
 
