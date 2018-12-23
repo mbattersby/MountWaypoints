@@ -120,6 +120,7 @@ MWP.MapWaypointList = {
             check = function ()
                     return MWP:MissingMounts(1201)
                 end,
+            namePlateScan = function (n) return n == 'Frightened Kodo' end,
             { 41, 65, "Frightened Kodo" },
         },
         {
@@ -547,6 +548,7 @@ function MWP:PLAYER_LOGIN()
     self.db = MountWayPointsDB or CopyTable(defaults)
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
+    self.currentNamePlateScans = { }
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("ZONE_CHANGED")
@@ -554,6 +556,7 @@ function MWP:PLAYER_LOGIN()
     self:RegisterEvent("ZONE_CHANGED_NEW_AREA")
     self:RegisterEvent("VIGNETTES_UPDATED")
     self:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
+    self:RegisterEvent("NAME_PLATE_UNIT_ADDED")
 
     self:UpdateZone()
 
@@ -566,6 +569,26 @@ function MWP:ZONE_CHANGED() self:UpdateZone() end
 function MWP:ZONE_CHANGED_INDOORS() self:UpdateZone() end
 function MWP:ZONE_CHANGED_NEW_AREA() self:UpdateZone() end
 
+function MWP:NAME_PLATE_UNIT_ADDED(unit)
+    local n = UnitName(unit)
+
+    local alert = false
+
+    for _, checkFunc in ipairs(self.currentNamePlateScans) do
+        if checkFunc(n) then
+            alert = true
+        end
+    end
+
+    if alert == true then
+        local msg = format("MWP %s found", n)
+
+        self:Print(msg)
+        SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
+        PlaySound(11466)
+    end
+end
+
 function MWP:UpdateZone()
     local mapID = C_Map.GetBestMapForUnit('player')
 
@@ -576,6 +599,7 @@ function MWP:UpdateZone()
     end
 
     wipe(self.currentVignetteScans)
+    wipe(self.currentNamePlateScans)
 
     self.currentMapID = mapID
 
@@ -587,6 +611,9 @@ function MWP:UpdateZone()
         if not set.check or set.check() then
             if set.vignetteScan then
                 tinsert(self.currentVignetteScans, set.vignetteScan)
+            end
+            if set.namePlateScan then
+                tinsert(self.currentNamePlateScans, set.namePlateScan)
             end
             for _,p in ipairs(set) do
                 local opts = { title = p[3], cleardistance = 20 }
