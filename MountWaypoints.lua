@@ -135,9 +135,9 @@ MWP.MapWaypointList = {
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and MWP:MissingMounts(1203)
-                        and not IsQuestFlaggedCompleted(54427)
+                        and not IsQuestFlaggedCompleted(54431) -- 54427?
                 end,
-            { 40.65, 73.33, "Athil Dewfire (Captured Umber Nightsaber)" },
+            { 41.66, 75.33, "Athil Dewfire (Captured Umber Nightsaber)" },
         },
         {
             check = function ()
