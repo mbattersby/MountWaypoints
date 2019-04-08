@@ -98,6 +98,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
+                        and not IsQuestFlaggedCompleted(54883) -- or 54840
                         and MWP:MissingMounts(1199)
                 end,
             { 49.66, 24.93, "Agathe Wyrmwood (Blackpaw)" },
