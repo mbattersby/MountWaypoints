@@ -87,7 +87,7 @@ MWP.MapWaypointList = {
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and MWP:MissingMounts(1182)
-                        and not IsQuestFlaggedCompleted(54588) -- or 53518
+                        and not IsQuestFlaggedCompleted(53518) -- or 54588
                 end,
             { 27.46, 55.89, "Overseer Krix (Lil' Donkey - In Cave)" },
         },
@@ -151,6 +151,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
+                        and not IsQuestFlaggedCOmpleted(54886)
                         and MWP:MissingMounts(1205)
                 end,
             { 50.6, 32.4, "Croz Bloodrage (Kaldorei Nightsaber)" },
