@@ -42,8 +42,8 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
-                        and MWP:MissingMounts(1173)
                         and not IsQuestFlaggedCompleted(53088)
+                        and MWP:MissingMounts(1173)
                 end,
             { 49.27, 40.05, "Knight-Captain Aldrin (Broken Highland Mustang)" },
         },
@@ -58,6 +58,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
+                        and not IsQuestFlaggedCompleted(53085)
                         and MWP:MissingMounts(1174)
                 end,
             { 53.97, 56.96, "Doomrider Helgrim (Highland Mustang)" },
@@ -65,13 +66,15 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return MWP:MissingMounts(1185)
-                        and not IsQuestFlaggedCompleted(54545) -- or 53518
+                        and not IsQuestFlaggedCompleted(53091)
+                        and not IsQuestFlaggedCompleted(53517)
                 end,
             { 67.48, 60.58, "Nimar the Slayer (Witherbark Direwing)" },
         },
         {
             check = function ()
                     return MWP:MissingMounts(1180)
+                        and not IsQuestFlaggedCompleted(53083)
                         and not IsQuestFlaggedCompleted(53504)
                 end,
             { 67.06, 65.89, "Beastrider Kama (Swift Albino Raptor)" },
@@ -79,6 +82,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
+                        and not IsQuestFlaggedCompleted(53014)
                         and MWP:MissingMounts(1182)
                 end,
             { 33.44, 36.94, "Overseer Krix (Lil' Donkey - In Cave)" },
@@ -87,7 +91,7 @@ MWP.MapWaypointList = {
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and MWP:MissingMounts(1182)
-                        and not IsQuestFlaggedCompleted(53518) -- or 54588
+                        and not IsQuestFlaggedCompleted(53518)
                 end,
             { 27.46, 55.89, "Overseer Krix (Lil' Donkey - In Cave)" },
         },
@@ -98,7 +102,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
-                        and not IsQuestFlaggedCompleted(54883) -- or 54840
+                        and not IsQuestFlaggedCompleted(54883)
                         and MWP:MissingMounts(1199)
                 end,
             { 49.66, 24.93, "Agathe Wyrmwood (Blackpaw)" },
@@ -114,6 +118,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return MWP:MissingMounts(1200)
+                        and not IsQuestFlaggedCompleted(54695)
                         and not IsQuestFlaggedCompleted(54696)
                 end,
             { 56.44, 30.77, "Alash'anir (Ashenvale Chimaera)" },
