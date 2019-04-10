@@ -157,7 +157,7 @@ MWP.MapWaypointList = {
         {
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
-                        and not IsQuestFlaggedCOmpleted(54886)
+                        and not IsQuestFlaggedCompleted(54886)
                         and MWP:MissingMounts(1205)
                 end,
             { 50.6, 32.4, "Croz Bloodrage (Kaldorei Nightsaber)" },
