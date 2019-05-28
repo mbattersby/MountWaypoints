@@ -639,7 +639,9 @@ function MWP:UpdateZone()
     -- so the TomTom call doesn't error.
 
     HereBeDragons.UpdateCurrentPosition()
-    TomTom:SetClosestWaypoint()
+    if TomTom:GetClosestWaypoint() then
+        TomTom:SetClosestWaypoint()
+    end
 
 end
 
