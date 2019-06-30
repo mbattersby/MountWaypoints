@@ -549,6 +549,27 @@ MWP.MapWaypointList = {
             { 65.6, 26.6, "Puscilla (Biletooth Gnasher)" },
         },
     },
+    -- Nazjatar
+    [1355] = {
+        {
+            check = function () return MWP:MissingMounts(1258) end,
+            { 28.0, 32.2, "Fabious" },
+            { 75, 51, "Fabious" },
+        },
+        {
+            check = function () return MWP:MissingMounts(1257) end,
+            { 62.4, 59.4, "Soundless (Silent Glider)" },
+            { 58.0, 42.0, "Soundless (Silent Glider)" },
+            { 64.7, 51.6, "Soundless (Silent Glider)" },
+        },
+    },
+    -- Mechagon
+    [1462] = {
+        {
+            check = function () return MWP:MissingMounts(1248) end,
+            { 65.67, 78.32, "Rustfeather (Junkheap Drifter)" },
+        },
+    },
 }
 
 local defaults = { ['forceCollected'] = {} }
