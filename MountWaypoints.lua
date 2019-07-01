@@ -557,7 +557,7 @@ MWP.MapWaypointList = {
             { 75, 51, "Fabious" },
         },
         {
-            check = function () return MWP:MissingMounts(1257) end,
+            check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
             { 62.4, 59.4, "Soundless (Silent Glider)" },
             { 58.0, 42.0, "Soundless (Silent Glider)" },
             { 64.7, 51.6, "Soundless (Silent Glider)" },
@@ -566,8 +566,12 @@ MWP.MapWaypointList = {
     -- Mechagon
     [1462] = {
         {
-            check = function () return MWP:MissingMounts(1248) end,
-            { 65.67, 78.32, "Rustfeather (Junkheap Drifter)" },
+            check = function () return MWP:MissingMounts(1248) and not IsQuestFlaggedCompleted(55811) end,
+            { 65.7, 78.3, "Rustfeather (Junkheap Drifter)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(1229) and not IsQuestFlaggedCompleted(55512) end,
+            { 52.0, 41.4, "Arachnoid Harvester (Rusty Mechanocrawler)" },
         },
     },
 }
