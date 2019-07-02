@@ -662,14 +662,14 @@ function MWP:UpdateZone()
         end
     end 
 
-    -- HBD hasn't fired a timer even on login yet so we force an update
-    -- so the TomTom call doesn't error.
+    -- On login HBD hasn't fired a timer event yet. Force an update so that
+    -- the TomTom call doesn't error.
 
     HereBeDragons.UpdateCurrentPosition()
-    if TomTom:GetClosestWaypoint() then
-        TomTom:SetClosestWaypoint()
+    local wp = TomTom:GetClosestWaypoint()
+    if wp then
+        TomTom:SetCrazyArrow(wp, 15, wp.title)
     end
-
 end
 
 function MWP:Print(...)
