@@ -553,8 +553,10 @@ MWP.MapWaypointList = {
     [1355] = {
         {
             check = function () return MWP:MissingMounts(1258) end,
-            { 28.0, 32.2, "Fabious" },
-            { 75, 51, "Fabious" },
+            { 25.6, 29.3, "Fabious, Bloodfin Village" },
+            { 38.5, 13.0, "Fabious, Chitterspine Caverns" },
+            { 47.5, 83.0, "Fabious, Tide's Fall" },
+            { 78.0, 52.9, "Fabious, Drowned Market" },
         },
         {
             check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
