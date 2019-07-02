@@ -553,6 +553,7 @@ MWP.MapWaypointList = {
     [1355] = {
         {
             check = function () return MWP:MissingMounts(1258) end,
+            vignetteScan = function (n) return n:match("Fabious") end,
             { 25.6, 29.3, "Fabious, Bloodfin Village" },
             { 38.5, 13.0, "Fabious, Chitterspine Caverns" },
             { 47.5, 83.0, "Fabious, Tide's Fall" },
@@ -560,6 +561,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
+            vignetteScan = function (n) return n:match("Soundless") and not IsQuestFlaggedCompleted(56298) end,
             { 53.8, 42.2, "Soundless (Silent Glider)" },
             { 54.6, 50.4, "Soundless (Silent Glider)" },
             { 58.2, 52.4, "Soundless (Silent Glider)" },
@@ -569,10 +571,12 @@ MWP.MapWaypointList = {
     [1462] = {
         {
             check = function () return MWP:MissingMounts(1248) and not IsQuestFlaggedCompleted(55811) end,
+            vignetteScan = function (n) return n:match("Rustfeather") and not IsQuestFlaggedCompleted(55811)end,
             { 65.7, 78.3, "Rustfeather (Junkheap Drifter)" },
         },
         {
             check = function () return MWP:MissingMounts(1229) and not IsQuestFlaggedCompleted(55512) end,
+            vignetteScan = function (n) return n:match("Arachnoid Harvester") and not IsQuestFlaggedCompleted(55512) end,
             { 52.0, 41.4, "Arachnoid Harvester (Rusty Mechanocrawler)" },
         },
     },
@@ -697,6 +701,8 @@ function MWP:VIGNETTE_MINIMAP_UPDATED(id)
     for _, checkFunc in ipairs(self.currentVignetteScans) do
         if checkFunc(info.name) then
             alert = true
+            tDeleteItem(checkFunc)
+            break
         end
     end
 
