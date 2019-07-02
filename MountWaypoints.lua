@@ -560,9 +560,9 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
-            { 62.4, 59.4, "Soundless (Silent Glider)" },
-            { 58.0, 42.0, "Soundless (Silent Glider)" },
-            { 64.7, 51.6, "Soundless (Silent Glider)" },
+            { 53.8, 42.2, "Soundless (Silent Glider)" },
+            { 54.6, 50.4, "Soundless (Silent Glider)" },
+            { 58.2, 52.4, "Soundless (Silent Glider)" },
         },
     },
     -- Mechagon
