@@ -701,7 +701,7 @@ function MWP:VIGNETTE_MINIMAP_UPDATED(id)
     for _, checkFunc in ipairs(self.currentVignetteScans) do
         if checkFunc(info.name) then
             alert = true
-            tDeleteItem(checkFunc)
+            tDeleteItem(self.currentVignetteScans, checkFunc)
             break
         end
     end
