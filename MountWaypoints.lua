@@ -632,39 +632,40 @@ end
 function MWP:UpdateZone()
     local mapID = C_Map.GetBestMapForUnit('player')
 
-    if mapID == self.currentMapID then return end
+    if mapID ~= self.currentMapID then
 
-    while #self.currentWaypoints > 0 do
-        TomTom:RemoveWaypoint(table.remove(self.currentWaypoints))
-    end
-
-    wipe(self.currentVignetteScans)
-    wipe(self.currentNamePlateScans)
-
-    self.currentMapID = mapID
-
-    if not self.MapWaypointList[mapID] then
-        return
-    end
-
-    for _,set in ipairs(self.MapWaypointList[mapID]) do
-        if not set.check or set.check() then
-            if set.vignetteScan then
-                tinsert(self.currentVignetteScans, set.vignetteScan)
-            end
-            if set.namePlateScan then
-                tinsert(self.currentNamePlateScans, set.namePlateScan)
-            end
-            for _,p in ipairs(set) do
-                local opts = { title = p[3], cleardistance = 20 }
-                if set.dontclear then opts.cleardistance = 0 end
-                local uid = TomTom:AddWaypoint(
-                        mapID, p[1]/100.0, p[2]/100.0, opts
-                    )
-                tinsert(self.currentWaypoints, uid)
-            end
+        while #self.currentWaypoints > 0 do
+            TomTom:RemoveWaypoint(table.remove(self.currentWaypoints))
         end
-    end 
+
+        wipe(self.currentVignetteScans)
+        wipe(self.currentNamePlateScans)
+
+        self.currentMapID = mapID
+
+        if not self.MapWaypointList[mapID] then
+            return
+        end
+
+        for _,set in ipairs(self.MapWaypointList[mapID]) do
+            if not set.check or set.check() then
+                if set.vignetteScan then
+                    tinsert(self.currentVignetteScans, set.vignetteScan)
+                end
+                if set.namePlateScan then
+                    tinsert(self.currentNamePlateScans, set.namePlateScan)
+                end
+                for _,p in ipairs(set) do
+                    local opts = { title = p[3], cleardistance = 20 }
+                    if set.dontclear then opts.cleardistance = 0 end
+                    local uid = TomTom:AddWaypoint(
+                            mapID, p[1]/100.0, p[2]/100.0, opts
+                        )
+                    tinsert(self.currentWaypoints, uid)
+                end
+            end
+        end 
+    end
 
     -- On login HBD hasn't fired a timer event yet. Force an update so that
     -- the TomTom call doesn't error.
