@@ -2,7 +2,9 @@
 
 ----------------------------------------------------------------------------]]--
 
-MountWaypoints.MapWaypointList = {
+local MWP = MountWaypoints
+
+MWP.MapWaypointList = {
     -- Arathi Highlands
     [14] = {
         {
