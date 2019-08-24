@@ -80,6 +80,9 @@ function MWP:NAME_PLATE_UNIT_ADDED(unit)
         self:Print(msg)
         SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
         PlaySound(11466)
+        if not GetRaidTargetIndex(unit) then
+            SetRaidTarget(unit, 6)
+        end
     end
 end
 
