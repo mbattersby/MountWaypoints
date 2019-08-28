@@ -64,12 +64,10 @@ function MWP:ZONE_CHANGED_INDOORS() self:UpdateZone() end
 function MWP:ZONE_CHANGED_NEW_AREA() self:UpdateZone() end
 
 function MWP:NAME_PLATE_UNIT_ADDED(unit)
-    local n = UnitName(unit)
-
     local alert = false
 
     for _, checkFunc in ipairs(self.currentNamePlateScans) do
-        if checkFunc(n) then
+        if checkFunc(unit) then
             alert = true
         end
     end

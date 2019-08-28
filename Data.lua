@@ -95,7 +95,9 @@ MWP.MapWaypointList = {
             check = function ()
                     return MWP:MissingMounts(1201)
                 end,
-            namePlateScan = function (n) return n == 'Frightened Kodo' end,
+            namePlateScan = function (unit)
+                    return UnitName('unit') == 'Frightened Kodo'
+                end,
             { 41, 65, "Frightened Kodo" },
         },
         {
@@ -533,6 +535,14 @@ MWP.MapWaypointList = {
             { 53.8, 42.2, "Soundless (Silent Glider)" },
             { 54.6, 50.4, "Soundless (Silent Glider)" },
             { 58.2, 52.4, "Soundless (Silent Glider)" },
+        },
+        {
+            namePlateScan = function (unit)
+                local guid = UnitGUID('unit')
+                if guid and select(6, strsplit('-', guid)) == '152361' then
+                    return true
+                end
+            end
         },
     },
     -- Mechagon
