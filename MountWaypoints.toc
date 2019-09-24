@@ -1,4 +1,4 @@
-## Interface: 80200
+## Interface: 80205
 ## Title: MountWaypoints
 ## Version: 8.0.0
 ## Author: Xodiv-Nagrand
