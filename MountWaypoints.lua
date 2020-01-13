@@ -141,17 +141,8 @@ end
 
 function MWP:Print(...)
     local msg = format(...)
-    local frame = DEFAULT_CHAT_FRAME
-
-    for i = 1, NUM_CHAT_WINDOWS do
-        local f = _G["ChatFrame"..i]
-        if f and f:IsShown() then 
-            frame = f
-            break
-        end
-    end
-
-    frame:AddMessage(msg)
+    local f = SELECTED_CHAT_FRAME or DEFAULT_CHAT_FRAME
+    f:AddMessage(msg)
 end
 
 function MWP:VIGNETTE_MINIMAP_UPDATED(id)
