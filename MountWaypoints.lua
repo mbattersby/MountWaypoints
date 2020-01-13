@@ -1,7 +1,14 @@
 --[[----------------------------------------------------------------------------
 
-    Look for rare spawns that drop mounts. Put TomTom waypoints down for
-    their spawn points. Alert on their Vignette's appearing.
+  MountWayPoints
+
+  Look for rare spawns that drop mounts. Put TomTom waypoints down for
+  their spawn points. Alert on their Vignette's appearing.
+
+  Copyright 2016-2020 Mike Battersby
+
+  Released under the terms of the GNU General Public License version 2 (GPLv2).
+  See the file LICENSE.txt.
 
 ----------------------------------------------------------------------------]]--
 

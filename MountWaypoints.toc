@@ -1,6 +1,6 @@
-## Interface: 80205
+## Interface: 80300
 ## Title: MountWaypoints
-## Version: 8.0.0
+## Version: @project-version@
 ## Author: Xodiv-Nagrand
 ## Email: mib@post.com
 ## Dependencies: TomTom
