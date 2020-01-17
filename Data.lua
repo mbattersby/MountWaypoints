@@ -96,7 +96,7 @@ MWP.MapWaypointList = {
                     return MWP:MissingMounts(1201)
                 end,
             namePlateScan = function (unit)
-                    return UnitName('unit') == 'Frightened Kodo'
+                    return UnitName(unit) == 'Frightened Kodo'
                 end,
             { 41, 65, "Frightened Kodo" },
         },
@@ -478,7 +478,7 @@ MWP.MapWaypointList = {
         {
             check = function () return MWP:MissingMounts(1329) end,
             namePlateScan = function (unit)
-                    return UnitName('unit') == 'Elusive Quickhoof'
+                    return UnitName(unit) == 'Elusive Quickhoof'
                 end,
             { 26.4, 52.5, "Elusive Quickhoof 10" },
             { 28.0, 65.0, "Elusive Quickhoof 1" },
