@@ -473,6 +473,25 @@ MWP.MapWaypointList = {
             { 70.5, 33.7, "Naroua (Fel-Spotted Egg)" },
         },
     },
+    -- Vol'dun
+    [864] = {
+        {
+            check = function () return MWP:MissingMounts(1329) end,
+            namePlateScan = function (unit)
+                    return UnitName('unit') == 'Elusive Quickhoof'
+                end,
+            { 26.4, 52.5, "Elusive Quickhoof 10" },
+            { 28.0, 65.0, "Elusive Quickhoof 1" },
+            { 31.1, 67.3, "Elusive Quickhoof 9" },
+            { 42.0, 60.0, "Elusive Quickhoof 6" },
+            { 43.0, 69.0, "Elusive Quickhoof 7" },
+            { 51.1, 85.9, "Elusive Quickhoof 2" },
+            { 52.5, 89.0, "Elusive Quickhoof 3" },
+            { 54.6, 53.2, "Elusive Quickhoof 4" },
+            { 54.0, 83.0, "Elusive Quickhoof 8" },
+            { 55.0, 73.0, "Elusive Quickhoof 5" },
+        },
+    },
     -- Mac'aree
     [882] = {
         {
@@ -549,13 +568,50 @@ MWP.MapWaypointList = {
     [1462] = {
         {
             check = function () return MWP:MissingMounts(1248) and not IsQuestFlaggedCompleted(55811) end,
-            vignetteScan = function (n) return n:match("Rustfeather") and not IsQuestFlaggedCompleted(55811)end,
+            vignetteScan = function (n) return n:match("Rustfeather") and not IsQuestFlaggedCompleted(55811) end,
             { 65.7, 78.3, "Rustfeather (Junkheap Drifter)" },
         },
         {
             check = function () return MWP:MissingMounts(1229) and not IsQuestFlaggedCompleted(55512) end,
             vignetteScan = function (n) return n:match("Arachnoid Harvester") and not IsQuestFlaggedCompleted(55512) end,
             { 52.0, 41.4, "Arachnoid Harvester (Rusty Mechanocrawler)" },
+        },
+    },
+    -- Uldum (BfA)
+    [1527] = {
+        {
+            -- 55862 or 57273
+            check = function () return MWP:MissingMounts(1317) and not IsQuestFlaggedCompleted(57273) end,
+            vignetteScan = function (n) return n:match("Rotfeaster") end,
+            { 68.23, 31.97, "Rotfeaster (Waste Marauder)" },
+        },
+        {
+            check = function () return MWP:MissingMounts(1314) and not IsQuestFlaggedCompleted(57259) end,
+            vignetteScan = function (n) return n:match("Ishak of the Four Winds ") end,
+            { 73.8, 83.6, "Ishak of the Four Winds" },
+        },
+        {
+            check = function () return MWP:MissingMounts(1319) end,
+            vignetteScan = function (n) return n:match("Ishak of the Four Winds ") end,
+            { 30.8, 49.7, "Corpse Eater (Malevolent Drone)" },
+        },
+    },
+    -- Vale of Eternal Blossoms (BfA)
+    [1530] = {
+        {
+            check = function () return MWP:MissingMounts(1328) end,
+            vignetteScan = function (n) return n:match("Anh-De the Loyal") end,
+            { 34.1, 68.0, "Anh-De the Loyal (Xinlao)" }
+        },
+        {
+            check = function () return MWP:MissingMounts(1327) end,
+            vignetteScan = function (n) return n:match("Houndlord Ren") end,
+            { 9.0, 37.5, "Houndlord Ren (Ren's Stalwart Hound)" }
+        },
+        {
+            check = function () return MWP:MissingMounts(1297) end,
+            vignetteScan = function (n) return n:match("Ha-Li") end,
+            { 36.6, 37.6, "Ha-Li (Clutch of Ha-Li)" }
         },
     },
 }
