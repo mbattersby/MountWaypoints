@@ -580,7 +580,6 @@ MWP.MapWaypointList = {
     -- Uldum (BfA)
     [1527] = {
         {
-            -- 55862 or 57273
             check = function () return MWP:MissingMounts(1317) and not IsQuestFlaggedCompleted(57273) end,
             vignetteScan = function (n) return n:match("Rotfeaster") end,
             { 68.23, 31.97, "Rotfeaster (Waste Marauder)" },
@@ -592,7 +591,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(1319) end,
-            vignetteScan = function (n) return n:match("Ishak of the Four Winds ") end,
+            vignetteScan = function (n) return n:match("Corpse Eater") end,
             { 30.8, 49.7, "Corpse Eater (Malevolent Drone)" },
         },
     },
