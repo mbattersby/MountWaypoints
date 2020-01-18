@@ -557,7 +557,7 @@ MWP.MapWaypointList = {
         },
         {
             namePlateScan = function (unit)
-                local guid = UnitGUID('unit')
+                local guid = UnitGUID(unit)
                 if guid and select(6, strsplit('-', guid)) == '152361' then
                     return true
                 end
