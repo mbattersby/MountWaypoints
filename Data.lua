@@ -590,7 +590,7 @@ MWP.MapWaypointList = {
             { 73.8, 83.6, "Ishak of the Four Winds" },
         },
         {
-            check = function () return MWP:MissingMounts(1319) end,
+            check = function () return MWP:MissingMounts(1319) and not IsQuestFlaggedCompleted(58696) end,
             vignetteScan = function (n) return n:match("Corpse Eater") end,
             { 30.8, 49.7, "Corpse Eater (Malevolent Drone)" },
         },
