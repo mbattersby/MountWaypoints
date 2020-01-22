@@ -579,8 +579,15 @@ MWP.MapWaypointList = {
     },
     -- Uldum (BfA)
     [1527] = {
+        -- 6486 = Assault: NZoth
         {
-            check = function () return MWP:MissingMounts(1317) and not IsQuestFlaggedCompleted(57273) end,
+            check = function ()
+                if not MWP:MissingMounts(1317) or IsQuestFlaggedCompleted(57273) then
+                    return
+                end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(12) -- Kalimdor
+                return  tContains(poi, -1) -- Assault: Amathet Advance
+            end,
             vignetteScan = function (n) return n:match("Rotfeaster") end,
             { 68.23, 31.97, "Rotfeaster (Waste Marauder)" },
         },
@@ -590,25 +597,44 @@ MWP.MapWaypointList = {
             { 73.8, 83.6, "Ishak of the Four Winds" },
         },
         {
-            check = function () return MWP:MissingMounts(1319) and not IsQuestFlaggedCompleted(58696) end,
+            check = function ()
+                if not MWP:MissingMounts(1319) or IsQuestFlaggedCompleted(58696) then
+                    return
+                end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(12) -- Kalimdor
+                return  tContains(poi, -1) -- Assault: Aqir Unearthed
+            end,
             vignetteScan = function (n) return n:match("Corpse Eater") end,
             { 30.8, 49.7, "Corpse Eater (Malevolent Drone)" },
         },
     },
     -- Vale of Eternal Blossoms (BfA)
     [1530] = {
+        -- 6490 = Assault: Mogu
         {
-            check = function () return MWP:MissingMounts(1328) end,
+            check = function ()
+                if not MWP:MissingMounts(1328) then return end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
+                return  tContains(poi, 6490) -- Assault: Mogu
+            end,
             vignetteScan = function (n) return n:match("Anh-De the Loyal") end,
             { 34.1, 68.0, "Anh-De the Loyal (Xinlao)" }
         },
         {
-            check = function () return MWP:MissingMounts(1327) end,
+            check = function ()
+                if not MWP:MissingMounts(1327) then return end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
+                return  tContains(poi, 6490) -- Assault: Mogu
+            end,
             vignetteScan = function (n) return n:match("Houndlord Ren") end,
             { 9.0, 37.5, "Houndlord Ren (Ren's Stalwart Hound)" }
         },
         {
-            check = function () return MWP:MissingMounts(1297) end,
+            check = function ()
+                if not MWP:MissingMounts(1297) then return end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
+                return  tContains(poi, 6490) -- Assault: Mogu
+            end,
             vignetteScan = function (n) return n:match("Ha-Li") end,
             { 36.6, 37.6, "Ha-Li (Clutch of Ha-Li)" }
         },
