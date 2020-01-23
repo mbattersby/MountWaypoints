@@ -613,11 +613,11 @@ MWP.MapWaypointList = {
         -- 6490 = Assault: Mogu
         {
             check = function ()
-                if not MWP:MissingMounts(1328) then return end
+                if not MWP:MissingMounts(1328) or IsQuestFlaggedCompleted(57363) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
-            vignetteScan = function (n) return n:match("Anh-De the Loyal") end,
+            vignetteScan = function (n) return n:match("Anh%-De the Loyal") end,
             { 34.1, 68.0, "Anh-De the Loyal (Xinlao)" }
         },
         {
@@ -635,7 +635,7 @@ MWP.MapWaypointList = {
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
-            vignetteScan = function (n) return n:match("Ha-Li") end,
+            vignetteScan = function (n) return n:match("Ha%-Li") end,
             { 36.6, 37.6, "Ha-Li (Clutch of Ha-Li)" }
         },
     },
