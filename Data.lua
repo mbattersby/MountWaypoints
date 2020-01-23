@@ -636,7 +636,7 @@ MWP.MapWaypointList = {
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
             vignetteScan = function (n) return n:match("Ha%-Li") end,
-            { 36.6, 37.6, "Ha-Li (Clutch of Ha-Li)" }
+            { 31.8, 41.8, "Ha-Li (Clutch of Ha-Li)" }
         },
     },
 }
