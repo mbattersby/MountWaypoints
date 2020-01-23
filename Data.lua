@@ -622,7 +622,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function ()
-                if not MWP:MissingMounts(1327) then return end
+                if not MWP:MissingMounts(1327) or IsQuestFlaggedCompleted(57345) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
