@@ -555,14 +555,6 @@ MWP.MapWaypointList = {
             { 54.6, 50.4, "Soundless (Silent Glider)" },
             { 58.2, 52.4, "Soundless (Silent Glider)" },
         },
-        {
-            namePlateScan = function (unit)
-                local guid = UnitGUID(unit)
-                if guid and select(6, strsplit('-', guid)) == '152361' then
-                    return true
-                end
-            end
-        },
     },
     -- Mechagon
     [1462] = {
