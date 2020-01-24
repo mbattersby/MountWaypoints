@@ -219,10 +219,10 @@ function MWP:SlashCommand(argstr)
             self.db.forceCollected[args[1]] = nil
         end
         self:Reset()
-    elseif cmd == "available" then
-        self:ShowAvailable()
     elseif cmd == "refresh" then
         self:Reset()
+    elseif cmd == "" then
+        self:ShowAvailable()
     end
     return true
 end
