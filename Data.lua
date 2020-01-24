@@ -476,7 +476,7 @@ MWP.MapWaypointList = {
     -- Vol'dun
     [864] = {
         {
-            check = function () return MWP:MissingMounts(1329) end,
+            check = function () return MWP:MissingMounts(1324) end,
             namePlateScan = function (unit)
                     return UnitName(unit) == 'Elusive Quickhoof'
                 end,
