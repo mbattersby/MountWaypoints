@@ -180,6 +180,17 @@ function MWP:Reset()
     self:ZONE_CHANGED_NEW_AREA()
 end
 
+function MWP:ShowAvailable()
+    for mapID, mapData in pairs(self.MapWaypointList) do
+        for _, data in ipairs(mapData) do
+            if data.check() then
+                local txt = format('%d: %s', mapID, data[1][3])
+                SELECTED_CHAT_FRAME:AddMessage(txt)
+            end
+        end
+    end
+end
+
 function MWP:SlashCommand(argstr)
     local args = { strsplit(" ", argstr) }
     local cmd = table.remove(args, 1)
@@ -207,6 +218,8 @@ function MWP:SlashCommand(argstr)
             self.db.forceCollected[args[1]] = nil
         end
         self:Reset()
+    elseif cmd == "available" then
+        self:ShowAvailable()
     elseif cmd == "refresh" then
         self:Reset()
     end
