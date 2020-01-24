@@ -630,5 +630,14 @@ MWP.MapWaypointList = {
             vignetteScan = function (n) return n:match("Ha%-Li") end,
             { 31.8, 41.8, "Ha-Li (Clutch of Ha-Li)" }
         },
+        {
+            check = function ()
+                if not MWP:MissingMounts(1311) then return end
+                if GetItemCount(174927, false) == 0 then return end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
+                return  tContains(poi, 6490) -- Assault: Mogu
+            end,
+            { 30, 51, "Ivory Cloud Serpent" }
+        }
     },
 }
