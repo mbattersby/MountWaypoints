@@ -104,7 +104,7 @@ end
 
 function MWP:UpdateZone()
 
-    self::PruneDeadWaypoints()
+    self:PruneDeadWaypoints()
 
     local mapID = C_Map.GetBestMapForUnit('player')
 
