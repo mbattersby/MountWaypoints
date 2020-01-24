@@ -1,6 +1,6 @@
 --[[----------------------------------------------------------------------------
 
-  MountWayPoints
+  MountWaypoints
 
   Look for rare spawns that drop mounts. Put TomTom waypoints down for
   their spawn points. Alert on their Vignette's appearing.
@@ -46,7 +46,9 @@ end
 local defaults = { ['forceCollected'] = {} }
 
 function MWP:PLAYER_LOGIN()
-    self.db = MountWayPointsDB or CopyTable(defaults)
+    MountWaypointsDB = MountWaypointsDB or CopyTable(defaults)
+
+    self.db = MountWaypointsDB
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
     self.currentNamePlateScans = { }
@@ -91,7 +93,19 @@ function MWP:NAME_PLATE_UNIT_ADDED(unit)
     end
 end
 
+function MWP:PruneDeadWaypoints()
+    for i = #self.currentWaypoints, 1, -1 do
+        local wp = self.currentWaypoints[i]
+        if not TomTom:IsValidWaypoint(wp) then
+            table.remove(self.currentWaypoints, i)
+        end
+    end
+end
+
 function MWP:UpdateZone()
+
+    self::PruneDeadWaypoints()
+
     local mapID = C_Map.GetBestMapForUnit('player')
 
     if mapID ~= self.currentMapID then
@@ -177,7 +191,7 @@ end
 
 function MWP:Reset()
     self.currentMapID = nil
-    self:ZONE_CHANGED_NEW_AREA()
+    self:UpdateZone()
 end
 
 function MWP:ShowAvailable()
@@ -212,7 +226,7 @@ function MWP:SlashCommand(argstr)
             self.db.forceCollected[args[1]] = true
         end
         self:Reset()
-    elseif cmd == "reset" then
+    elseif cmd == "show" then
         if args[1] == 'all' then
             wipe(self.db.forceCollected)
         else

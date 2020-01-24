@@ -619,7 +619,7 @@ MWP.MapWaypointList = {
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
             vignetteScan = function (n) return n:match("Houndlord Ren") end,
-            { 9.0, 37.5, "Houndlord Ren (Ren's Stalwart Hound)" }
+            { 12.8, 27.1, "Houndlord Ren (Ren's Stalwart Hound)" }
         },
         {
             check = function ()
@@ -637,7 +637,7 @@ MWP.MapWaypointList = {
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
-            { 30, 51, "Ivory Cloud Serpent" }
+            { 26.9, 50.9, "Ivory Cloud Serpent" }
         }
     },
 }

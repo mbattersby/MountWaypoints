@@ -4,6 +4,7 @@
 ## Author: Xodiv-Nagrand
 ## Email: mib@post.com
 ## Dependencies: TomTom
+## SavedVariables: MountWaypointsDB
 
 MountWaypoints.lua
 Data.lua
