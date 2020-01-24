@@ -184,7 +184,8 @@ function MWP:ShowAvailable()
     for mapID, mapData in pairs(self.MapWaypointList) do
         for _, data in ipairs(mapData) do
             if data.check() then
-                local txt = format('%d: %s', mapID, data[1][3])
+                local info = C_Map.GetMapInfo(mapID)
+                local txt = format('%s: %s', info.name, data[1][3])
                 SELECTED_CHAT_FRAME:AddMessage(txt)
             end
         end
