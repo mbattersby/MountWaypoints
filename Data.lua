@@ -572,6 +572,7 @@ MWP.MapWaypointList = {
     -- Uldum (BfA)
     [1527] = {
         -- 6486 = Assault: NZoth
+        -- 6488 = Assault: Aqir
         {
             check = function ()
                 if not MWP:MissingMounts(1317) or IsQuestFlaggedCompleted(57273) then
@@ -585,7 +586,7 @@ MWP.MapWaypointList = {
         },
         {
             check = function () return MWP:MissingMounts(1314) and not IsQuestFlaggedCompleted(57259) end,
-            vignetteScan = function (n) return n:match("Ishak of the Four Winds ") end,
+            vignetteScan = function (n) return n:match("Ishak of the Four Winds") end,
             { 73.8, 83.6, "Ishak of the Four Winds" },
         },
         {
@@ -602,6 +603,7 @@ MWP.MapWaypointList = {
     },
     -- Vale of Eternal Blossoms (BfA)
     [1530] = {
+        -- 6489 = Assault: N'Zoth
         -- 6490 = Assault: Mogu
         {
             check = function ()
