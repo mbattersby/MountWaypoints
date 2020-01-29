@@ -595,7 +595,7 @@ MWP.MapWaypointList = {
                     return
                 end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(12) -- Kalimdor
-                return  tContains(poi, -1) -- Assault: Aqir Unearthed
+                return  tContains(poi, 6488) -- Assault: Aqir Unearthed
             end,
             vignetteScan = function (n) return n:match("Corpse Eater") end,
             { 30.8, 49.7, "Corpse Eater (Malevolent Drone)" },
