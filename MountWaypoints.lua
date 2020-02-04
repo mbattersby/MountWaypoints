@@ -60,6 +60,7 @@ function MWP:PLAYER_LOGIN()
     self:RegisterEvent("VIGNETTES_UPDATED")
     self:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
     self:RegisterEvent("NAME_PLATE_UNIT_ADDED")
+    self:RegisterEvent("PLAYER_TARGET_CHANGED")
 
     self:UpdateZone()
 
@@ -186,6 +187,15 @@ end
 function MWP:VIGNETTES_UPDATED()
     for _, id in ipairs(C_VignetteInfo.GetVignettes()) do
         self:VIGNETTE_MINIMAP_UPDATED(id)
+    end
+end
+
+function MWP:PLAYER_TARGET_CHANGED()
+    local name = UnitName('target')
+    if name == 'Ivory Cloud Serpent' then
+        local msg = format("MWP %s found", name)
+        self:Print(msg)
+        SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
     end
 end
 
