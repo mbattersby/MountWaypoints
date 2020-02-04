@@ -605,6 +605,7 @@ MWP.MapWaypointList = {
     [1530] = {
         -- 6489 = Assault: N'Zoth
         -- 6490 = Assault: Mogu
+        -- 6491 = Assault: Mantid
         {
             check = function ()
                 if not MWP:MissingMounts(1328) or IsQuestFlaggedCompleted(57363) then return end
