@@ -20,6 +20,13 @@ MWP:SetScript("OnEvent", function (f, e, ...) if f[e] then f[e](f, ...) end end)
 -- TomTom requires HereBeDragons so we must have it already
 local HereBeDragons = LibStub("HereBeDragons-2.0")
 
+function MWP:AlertPlayer(name)
+    local msg = format("MWP %s found", name)
+    self:Print(msg)
+    SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
+    PlaySound(11466)
+end
+
 function MWP:CollectedMount(id)
     if self.db.forceCollected.all ~= nil then
         return self.db.forceCollected.all
@@ -83,11 +90,8 @@ function MWP:NAME_PLATE_UNIT_ADDED(unit)
     end
 
     if alert == true then
-        local msg = format("MWP %s found", n)
-
-        self:Print(msg)
-        SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
-        PlaySound(11466)
+        local name = UnitName("unit")
+        self:AlertPlayer(name)
         if not GetRaidTargetIndex(unit) then
             SetRaidTarget(unit, 6)
         end
@@ -176,11 +180,7 @@ function MWP:VIGNETTE_MINIMAP_UPDATED(id)
     end
 
     if alert == true then
-        local msg = format("MWP %s found", info.name)
-
-        self:Print(msg)
-        SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
-        PlaySound(11466)
+        self:AlertPlayer(info.name)
     end
 end
 
@@ -193,9 +193,7 @@ end
 function MWP:PLAYER_TARGET_CHANGED()
     local name = UnitName('target')
     if name == 'Ivory Cloud Serpent' then
-        local msg = format("MWP %s found", name)
-        self:Print(msg)
-        SendChatMessage(msg, "WHISPER", nil, UnitName("player"))
+        self:AlertPlayer(name)
     end
 end
 

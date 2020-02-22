@@ -641,6 +641,14 @@ MWP.MapWaypointList = {
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
             { 26.9, 50.9, "Ivory Cloud Serpent" }
+        },
+        {
+            check = function ()
+                if not MWP:MissingMounts(1313) then return end
+                local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
+                return  tContains(poi, 6490) -- Assault: Mogu
+            end,
+            { 21.8, 13.6, "Rei Lun (Pristine Cloud Serpent Scale)" }
         }
     },
 }
