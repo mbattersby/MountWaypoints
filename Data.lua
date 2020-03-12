@@ -491,6 +491,16 @@ MWP.MapWaypointList = {
             { 54.0, 83.0, "Elusive Quickhoof 8" },
             { 55.0, 73.0, "Elusive Quickhoof 5" },
         },
+        {
+            check = function ()
+                    if not MWP:MissingMounts(1250) then return end
+                    local quests = C_TaskQuest.GetQuestsForPlayerByMapID(864)
+                    for _, info in ipairs(quests) do
+                        if info.questId == 52196 then return true end
+                    end
+                end,
+            { 44.0, 55.5, "Dunegorger Kraulok (Mollie)" },
+        }
     },
     -- Mac'aree
     [882] = {
