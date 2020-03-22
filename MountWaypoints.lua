@@ -28,11 +28,11 @@ function MWP:AlertPlayer(name)
 end
 
 function MWP:CollectedMount(id)
-    if self.db.forceCollected.all ~= nil then
-        return self.db.forceCollected.all
+    if self.db.override.all ~= nil or self.override.all ~= nil then
+        return self.db.override.all == "hide" or self.override.all == "hide"
     end
-    if self.db.forceCollected[id] ~= nil then
-        return self.db.forceCollected[id]
+    if self.db.override[id] ~= nil or self.override[id] ~= nil then
+        return self.db.override[id] == "hide" or self.override[id] == "hide"
     end
     local collected = select(11, C_MountJournal.GetMountInfoByID(id))
     return collected
@@ -41,7 +41,7 @@ end
 -- Missing at least one of the argument mountIDs
 function MWP:MissingMounts(...)
     local id
-    for i = 1, select('#', ...) do
+    for i = 1, select("#", ...) do
         id = select(i, ...)
         if self:CollectedMount(id) == false then
             return true
@@ -50,15 +50,23 @@ function MWP:MissingMounts(...)
     return false
 end
 
-local defaults = { ['forceCollected'] = {} }
+local defaults = { ["override"] = {} }
 
 function MWP:PLAYER_LOGIN()
     MountWaypointsDB = MountWaypointsDB or CopyTable(defaults)
+    for k, v in pairs(defaults) do
+       MountWaypointsDB[k] = MountWaypointsDB[k] or CopyTable(v)
+    end
+    for k, v in pairs(MountWaypointsDB) do
+        if not defaults[k] then MountWaypointsDB[k] = nil end
+    end
 
     self.db = MountWaypointsDB
     self.currentWaypoints = { }
     self.currentVignetteScans = { }
     self.currentNamePlateScans = { }
+
+    self.override = { }
 
     self:RegisterEvent("PLAYER_ENTERING_WORLD")
     self:RegisterEvent("ZONE_CHANGED")
@@ -111,7 +119,7 @@ function MWP:UpdateZone()
 
     self:PruneDeadWaypoints()
 
-    local mapID = C_Map.GetBestMapForUnit('player')
+    local mapID = C_Map.GetBestMapForUnit("player")
 
     if mapID ~= self.currentMapID then
 
@@ -191,13 +199,13 @@ function MWP:VIGNETTES_UPDATED()
 end
 
 function MWP:PLAYER_TARGET_CHANGED()
-    local name = UnitName('target')
-    if name == 'Ivory Cloud Serpent' then
+    local name = UnitName("target")
+    if name == "Ivory Cloud Serpent" then
         self:AlertPlayer(name)
     end
 end
 
-function MWP:Reset()
+function MWP:Refresh()
     self.currentMapID = nil
     self:UpdateZone()
 end
@@ -207,7 +215,7 @@ function MWP:ShowAvailable()
         for _, data in ipairs(mapData) do
             if data.check() then
                 local info = C_Map.GetMapInfo(mapID)
-                local txt = format('%s: %s', info.name, data[1][3])
+                local txt = format("%s: %s", info.name, data[1][3])
                 SELECTED_CHAT_FRAME:AddMessage(txt)
             end
         end
@@ -218,32 +226,42 @@ function MWP:SlashCommand(argstr)
     local args = { strsplit(" ", argstr) }
     local cmd = table.remove(args, 1)
 
-    if cmd == "show" then
-        if args[1] ~= 'all' then
+    if cmd == "show" or cmd == "show" then
+        if args[1] ~= "all" then
             args[1] = tonumber(args[1])
         end
         if args[1] then
-            self.db.forceCollected[args[1]] = false
+            self.override[args[1]] = cmd
         end
-        self:Reset()
-    elseif cmd == "hide" then
-        if args[1] ~= 'all' then
+        self:Refresh()
+    elseif cmd == "clear" then
+        if args[1] ~= "all" then
             args[1] = tonumber(args[1])
         end
         if args[1] then
-            self.db.forceCollected[args[1]] = true
+            self.override[args[1]] = nil
         end
-        self:Reset()
-    elseif cmd == "show" then
-        if args[1] == 'all' then
-            wipe(self.db.forceCollected)
+        self:Refresh()
+    elseif cmd == "force" then
+        local actio, mount = args[1], args[2]
+        if mount == "all" then
+            if action == "show" then
+                wipe(self.db.override)
+            elseif action == "hide" then
+                wipe(self.db.override)
+                self.db.override.all = action
+            end
         else
-            self.db.forceCollected[args[1]] = nil
+            mount = tonumber(mount)
+            if mount then
+                if action == "show" or action == "hide" then
+                    self.db.override[mount] = action
+                end
+            end
         end
-        self:Reset()
     elseif cmd == "refresh" then
-        self:Reset()
-    elseif cmd == "" then
+        self:Refresh()
+    elseif cmd == "" or cmd == "list" then
         self:ShowAvailable()
     end
     return true
