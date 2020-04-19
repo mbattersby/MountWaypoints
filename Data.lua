@@ -553,6 +553,9 @@ MWP.MapWaypointList = {
         {
             check = function () return MWP:MissingMounts(1258) end,
             vignetteScan = function (n) return n:match("Fabious") end,
+            namePlateScan = function (unit)
+                    return UnitName(unit) == 'Fabious'
+                end,
             { 25.6, 29.3, "Fabious, Bloodfin Village" },
             { 38.5, 13.0, "Fabious, Chitterspine Caverns" },
             { 47.5, 83.0, "Fabious, Tide's Fall" },
