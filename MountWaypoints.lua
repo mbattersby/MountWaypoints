@@ -98,7 +98,7 @@ function MWP:NAME_PLATE_UNIT_ADDED(unit)
     end
 
     if alert == true then
-        local name = UnitName("unit")
+        local name = UnitName(unit)
         self:AlertPlayer(name)
         if not GetRaidTargetIndex(unit) then
             SetRaidTarget(unit, 6)
