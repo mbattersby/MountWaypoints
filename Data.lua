@@ -4,6 +4,8 @@
 
 local MWP = MountWaypoints
 
+local IsQuestFlaggedCompleted = C_QuestLog.IsQuestFlaggedCompleted
+
 MWP.MapWaypointList = {
     -- Arathi Highlands
     [14] = {
