@@ -566,9 +566,13 @@ MWP.MapWaypointList = {
         {
             check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
             vignetteScan = function (n) return n:match("Soundless") and not IsQuestFlaggedCompleted(56298) end,
+            { 62.4, 59.6, "Soundless (Silent Glider)" },
+            { 64.8, 51.8, "Soundless (Silent Glider)" },
+            { 60.2, 47.4, "Soundless (Silent Glider)" },
+            { 58.2, 41.4, "Soundless (Silent Glider)" },
             { 53.8, 42.2, "Soundless (Silent Glider)" },
-            { 54.6, 50.4, "Soundless (Silent Glider)" },
-            { 58.2, 52.4, "Soundless (Silent Glider)" },
+            { 54.6, 50.6, "Soundless (Silent Glider)" },
+            { 57.6, 51.8, "Soundless (Silent Glider)" },
         },
     },
     -- Mechagon
