@@ -27,22 +27,26 @@ function MWP:AlertPlayer(name)
     PlaySound(11466)
 end
 
+function MWP:Override(ids)
+    if self.override.all ~= nil then
+        return self.override.all
+    end
+
+    for _,id in ipairs(ids) do
+        if self.override[id] ~= nil then
+            return self.override[id]
+        end
+    end
+end
+
 function MWP:CollectedMount(id)
-    if self.db.override.all ~= nil or self.override.all ~= nil then
-        return self.db.override.all == "hide" or self.override.all == "hide"
-    end
-    if self.db.override[id] ~= nil or self.override[id] ~= nil then
-        return self.db.override[id] == "hide" or self.override[id] == "hide"
-    end
     local collected = select(11, C_MountJournal.GetMountInfoByID(id))
     return collected
 end
 
 -- Missing at least one of the argument mountIDs
-function MWP:MissingMounts(...)
-    local id
-    for i = 1, select("#", ...) do
-        id = select(i, ...)
+function MWP:MissingMounts(ids)
+    for _,id in ipairs(ids) do
         if self:CollectedMount(id) == false then
             return true
         end
@@ -50,7 +54,7 @@ function MWP:MissingMounts(...)
     return false
 end
 
-local defaults = { ["override"] = {} }
+local defaults = { }
 
 function MWP:PLAYER_LOGIN()
     MountWaypointsDB = MountWaypointsDB or CopyTable(defaults)
@@ -137,7 +141,7 @@ function MWP:UpdateZone()
         end
 
         for _,set in ipairs(self.MapWaypointList[mapID]) do
-            if not set.check or set.check() then
+            if MWP:ShouldShow(set) then
                 if set.vignetteScan then
                     tinsert(self.currentVignetteScans, set.vignetteScan)
                 end
@@ -210,10 +214,22 @@ function MWP:Refresh()
     self:UpdateZone()
 end
 
+function MWP:ShouldShow(data)
+    if MWP:Override(data.ids) == 'show' then
+        return true
+    elseif MWP:Override(data.ids) == 'hide' then
+        return false
+    elseif data.check and not data.check() then
+        return false
+    else
+        return MWP:MissingMounts(data.ids)
+    end
+end
+
 function MWP:ShowAvailable()
     for mapID, mapData in pairs(self.MapWaypointList) do
         for _, data in ipairs(mapData) do
-            if data.check() then
+            if MWP:ShouldShow(data) then
                 local info = C_Map.GetMapInfo(mapID)
                 local txt = format("%s: %s", info.name, data[1][3])
                 SELECTED_CHAT_FRAME:AddMessage(txt)
@@ -226,7 +242,7 @@ function MWP:SlashCommand(argstr)
     local args = { strsplit(" ", argstr) }
     local cmd = table.remove(args, 1)
 
-    if cmd == "show" or cmd == "show" then
+    if cmd == "show" or cmd == "hide" then
         if args[1] ~= "all" then
             args[1] = tonumber(args[1])
         end
@@ -242,23 +258,6 @@ function MWP:SlashCommand(argstr)
             self.override[args[1]] = nil
         end
         self:Refresh()
-    elseif cmd == "force" then
-        local actio, mount = args[1], args[2]
-        if mount == "all" then
-            if action == "show" then
-                wipe(self.db.override)
-            elseif action == "hide" then
-                wipe(self.db.override)
-                self.db.override.all = action
-            end
-        else
-            mount = tonumber(mount)
-            if mount then
-                if action == "show" or action == "hide" then
-                    self.db.override[mount] = action
-                end
-            end
-        end
     elseif cmd == "refresh" then
         self:Refresh()
     elseif cmd == "" or cmd == "list" then

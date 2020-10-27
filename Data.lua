@@ -10,57 +10,57 @@ MWP.MapWaypointList = {
     -- Arathi Highlands
     [14] = {
         {
+            ids = { 1173 },
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and not IsQuestFlaggedCompleted(53088)
-                        and MWP:MissingMounts(1173)
                 end,
             { 49.27, 40.05, "Knight-Captain Aldrin (Broken Highland Mustang)" },
         },
         {
+            ids = { 1183 },
             check = function ()
-                    return MWP:MissingMounts(1183)
-                        and not IsQuestFlaggedCompleted(53022)
+                    return not IsQuestFlaggedCompleted(53022)
                         and not IsQuestFlaggedCompleted(53526)
                 end,
             { 57.15, 45.75, "Skullripper" },
         },
         {
+            ids = { 1174 },
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
                         and not IsQuestFlaggedCompleted(53085)
-                        and MWP:MissingMounts(1174)
                 end,
             { 53.97, 56.96, "Doomrider Helgrim (Highland Mustang)" },
         },
         {
+            ids = { 1185 },
             check = function ()
-                    return MWP:MissingMounts(1185)
-                        and not IsQuestFlaggedCompleted(53091)
+                    return not IsQuestFlaggedCompleted(53091)
                         and not IsQuestFlaggedCompleted(53517)
                 end,
             { 67.48, 60.58, "Nimar the Slayer (Witherbark Direwing)" },
         },
         {
+            ids = { 1180 },
             check = function ()
-                    return MWP:MissingMounts(1180)
-                        and not IsQuestFlaggedCompleted(53083)
+                    return not IsQuestFlaggedCompleted(53083)
                         and not IsQuestFlaggedCompleted(53504)
                 end,
             { 67.06, 65.89, "Beastrider Kama (Swift Albino Raptor)" },
         },
         {
+            ids = { 1182 },
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
                         and not IsQuestFlaggedCompleted(53014)
-                        and MWP:MissingMounts(1182)
                 end,
             { 33.44, 36.94, "Overseer Krix (Lil' Donkey - In Cave)" },
         },
         {
+            ids = { 1182 },
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
-                        and MWP:MissingMounts(1182)
                         and not IsQuestFlaggedCompleted(53518)
                 end,
             { 27.46, 55.89, "Overseer Krix (Lil' Donkey - In Cave)" },
@@ -70,67 +70,65 @@ MWP.MapWaypointList = {
     -- Darkshore
     [62] = {
         {
+            ids = { 1199 },
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
                         and not IsQuestFlaggedCompleted(54883)
-                        and MWP:MissingMounts(1199)
                 end,
             { 49.66, 24.93, "Agathe Wyrmwood (Blackpaw)" },
         },
         {
+            ids = { 1199 },
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and not IsQuestFlaggedCompleted(54890)
-                        and MWP:MissingMounts(1199)
                 end,
             { 49.66, 24.93, "Blackpaw" },
         },
         {
+            ids = { 1200 },
             check = function ()
-                    return MWP:MissingMounts(1200)
-                        and not IsQuestFlaggedCompleted(54695)
+                    return not IsQuestFlaggedCompleted(54695)
                         and not IsQuestFlaggedCompleted(54696)
                 end,
             { 56.44, 30.77, "Alash'anir (Ashenvale Chimaera)" },
         },
         {
-            check = function ()
-                    return MWP:MissingMounts(1201)
-                end,
+            ids = { 1201 },
             namePlateScan = function (unit)
                     return UnitName(unit) == 'Frightened Kodo'
                 end,
             { 41, 65, "Frightened Kodo" },
         },
         {
+            ids = { 1203 },
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
                         and not IsQuestFlaggedCompleted(54427)
-                        and MWP:MissingMounts(1203)
                 end,
             { 65, 20, "Moxo the Beheader (Captured Umber Nightsaber)" },
         },
         {
+            ids = { 1203 },
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and not IsQuestFlaggedCompleted(54431) -- 54427?
-                        and MWP:MissingMounts(1203)
                 end,
             { 41.66, 75.33, "Athil Dewfire (Captured Umber Nightsaber)" },
         },
         {
+            ids = { 1205 },
             check = function ()
                     return UnitFactionGroup('player') == 'Horde'
                         and not IsQuestFlaggedCompleted(54892)
-                        and MWP:MissingMounts(1205)
                 end,
             { 39.77, 32.91, "Shadowclaw (Kaldorei Nightsaber)" },
         },
         {
+            ids = { 1205 },
             check = function ()
                     return UnitFactionGroup('player') == 'Alliance'
                         and not IsQuestFlaggedCompleted(54886)
-                        and MWP:MissingMounts(1205)
                 end,
             { 50.6, 32.4, "Croz Bloodrage (Kaldorei Nightsaber)" },
         },
@@ -139,7 +137,7 @@ MWP.MapWaypointList = {
     -- Storm Peaks
     [120] = {
         {
-            check = function () return MWP:MissingMounts(265) end,
+            ids = { 265 },
             { 31.6, 69.7, "TLPD Bor's Breath" },
             { 35.3, 76.8, "TLPD Bor's Fall" },
             { 51.1, 71.2, "TLPD Brunnhildar" },
@@ -151,7 +149,7 @@ MWP.MapWaypointList = {
     -- Abyssal Depths, Vashj'ir
     [204] = {
         {
-            check = function () return MWP:MissingMounts(420) end,
+            ids = { 420 },
             {  41.0, 74.0, "Poseidus Spawn" },
         },
     },
@@ -159,7 +157,7 @@ MWP.MapWaypointList = {
     -- Shimmering Expanse, Vashj'ir
     [205] = {
         {
-            check = function () return MWP:MissingMounts(420) end,
+            ids = { 420 },
             {  66.0, 43.0, "Poseidus Spawn" },
             {  58.0, 83.0, "Poseidus Spawn" },
             {  46.0, 50.0, "Poseidus Spawn" },
@@ -170,7 +168,7 @@ MWP.MapWaypointList = {
     -- Deepholm
     [207] = {
         {
-            check = function () return MWP:MissingMounts(393) end,
+            ids = { 393 },
             { 42.6, 48.2, "Aeonaxx Spawn W" },
             { 45.4, 43.4, "Aeonaxx Spawn NW" },
             { 51.6, 42.8, "Aeonaxx Spawn NE" },
@@ -182,7 +180,7 @@ MWP.MapWaypointList = {
     -- The Jade Forest
     [371] = {
         {
-            check = function () return MWP:MissingMounts(534, 535, 536) end,
+            ids = { 534, 535, 536 },
             vignetteScan = function (n) return n:match("Warbringer") end,
             { 52.73, 18.99, "Zandalari Warbringer" },
         }
@@ -191,7 +189,7 @@ MWP.MapWaypointList = {
     -- Kun-Lai Summit
     [379] = {
         {
-            check = function () return MWP:MissingMounts(534, 535, 536) end,
+            ids = { 534, 535, 536 },
             vignetteScan = function (n) return n:match("Warbringer") end,
             { 75.09, 67.65, "Zandalari Warbringer" },
         }
@@ -200,7 +198,7 @@ MWP.MapWaypointList = {
     -- Townlong Steppes
     [388] = {
         {
-            check = function () return MWP:MissingMounts(534, 535, 536) end,
+            ids = { 534, 535, 536 },
             vignetteScan = function (n) return n:match("Warbringer") end,
             { 36.53, 85.67, "Zandalari Warbringer" },
         }
@@ -209,7 +207,7 @@ MWP.MapWaypointList = {
     -- Krasarang Wilds, only Slate spawns there
     [418] = {
         {
-            check = function () return MWP:MissingMounts(535) end,
+            ids = { 535 },
             vignetteScan = function (n) return n:match("Warbringer") end,
             { 39.08, 67.13, "Zandalari Warbringer" },
         }
@@ -218,7 +216,7 @@ MWP.MapWaypointList = {
     -- Dread Wastes
     [422] = {
         {
-            check = function () return MWP:MissingMounts(534, 535, 536) end,
+            ids = { 534, 535, 536 },
             vignetteScan = function (n) return n:match("Warbringer") end,
             { 47.47, 61.32, "Zandalari Warbringer" },
         }
@@ -227,7 +225,7 @@ MWP.MapWaypointList = {
     -- Frostfire Ridge --
     [525] = {
         {
-            check = function () return MWP:MissingMounts(627) end,
+            ids = { 627 },
             vignetteScan = function (n) return n:match("Gorok") end,
             { 63.4, 79.4, "Gorok Spawn" },
             { 22.8, 66.4, "Gorok Spawn" },
@@ -236,7 +234,7 @@ MWP.MapWaypointList = {
             { 58.0, 18.4, "Gorok Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 51.10, 19.86, "Edge of Reality" },
             { 52.40, 18.18, "Edge of Reality" },
             { 53.80, 17.46, "Edge of Reality" },
@@ -247,7 +245,7 @@ MWP.MapWaypointList = {
     -- Talador --
     [535] = {
         {
-            check = function () return MWP:MissingMounts(630) end,
+            ids = { 630 },
             vignetteScan = function (n) return n:match("Silthide") end,
             { 78.9, 55.4, "Silthide Spawn" },
             { 67.4, 60.0, "Silthide Spawn" },
@@ -256,7 +254,7 @@ MWP.MapWaypointList = {
             { 55.6, 80.6, "Silthide Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 39.88, 55.61, "Edge of Reality" },
             { 46.26, 52.56, "Edge of Reality" },
             { 47.16, 48.82, "Edge of Reality" },
@@ -270,7 +268,7 @@ MWP.MapWaypointList = {
     -- Shadowmoon Valley (Draenor) --
     [539] = {
         {
-            check = function () return MWP:MissingMounts(636) end,
+            ids = { 636 },
             vignetteScan = function (n) return n:match("Pathrunner") end,
             { 54.0, 30.4, "Pathrunner Spawn" },
             { 43.0, 32.2, "Pathrunner Spawn" },
@@ -280,7 +278,7 @@ MWP.MapWaypointList = {
             { 45.8, 68.2, "Pathrunner Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 41.90, 75.70, "Edge of Reality" },
             { 43.79, 70.96, "Edge of Reality" },
             { 48.95, 70.26, "Edge of Reality" },
@@ -293,7 +291,7 @@ MWP.MapWaypointList = {
     -- Spires of Arak
     [542] = {
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 36.43, 18.3, "Edge of Reality" },
             { 47.0, 20.1, "Edge of Reality" },
             { 50.4,  6.1, "Edge of Reality" },
@@ -304,7 +302,7 @@ MWP.MapWaypointList = {
     -- Gorgrond
     [543] = {
         {
-            check = function () return MWP:MissingMounts(655) end,
+            ids = { 655 },
             vignetteScan = function (n) return n:match("Poundfist") end,
             { 47.0, 54.1, "Poundfist Spawn" },
             { 43.2, 55.5, "Poundfist Spawn" },
@@ -313,7 +311,7 @@ MWP.MapWaypointList = {
             { 42.0, 25.0, "Poundfist Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 51.6, 38.8, "Edge of Reality" },
             { 54.0, 45.8, "Edge of Reality" },
             { 56.0, 40.7, "Edge of Reality" },
@@ -324,7 +322,7 @@ MWP.MapWaypointList = {
     -- Nagrand (Draenor)
     [550] = {
         {
-            check = function () return MWP:MissingMounts(612) end,
+            ids = { 612 },
             vignetteScan = function (n) return n:match("Nakk") end,
             { 62.8, 15.4, "Nakk the Thunderer Spawn" },
             { 62.4, 17.0, "Nakk the Thunderer Spawn" },
@@ -333,7 +331,7 @@ MWP.MapWaypointList = {
             { 50.0, 34.4, "Nakk the Thunderer Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(614) end,
+            ids = { 614 },
             vignetteScan = function (n) return n:match("Luk'hok") end,
             { 66.6, 44.0, "Luk'hok Spawn" },
             { 76.2, 31.8, "Luk'hok Spawn" },
@@ -343,7 +341,7 @@ MWP.MapWaypointList = {
             { 83.8, 63.6, "Luk'hok Spawn" },
         },
         {
-            check = function () return MWP:MissingMounts(682) end,
+            ids = { 682 },
             { 40.5, 47.6, "Edge of Reality" },
             { 44.0, 30.7, "Edge of Reality" },
             { 57.3, 26.7, "Edge of Reality" },
@@ -353,7 +351,7 @@ MWP.MapWaypointList = {
     -- Aszuna (Long-Forgotten Hippogryph)
     [630] = {
         {
-            check = function () return MWP:MissingMounts(802) end,
+            ids = { 802 },
             { 29.90, 26.55, "(on island)" },
             { 30.30, 23.95, "(In the cave)" },
             { 29.85, 35.87, "(Between some dead trees)" },
@@ -471,14 +469,14 @@ MWP.MapWaypointList = {
     -- Korkrun
     [830] = {
         {
-            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48667) end,
+            ids = { 906, 974, 975, 976 },
             { 70.5, 33.7, "Naroua (Fel-Spotted Egg)" },
         },
     },
     -- Vol'dun
     [864] = {
         {
-            check = function () return MWP:MissingMounts(1324) end,
+            ids = { 1324 },
             namePlateScan = function (unit)
                     return UnitName(unit) == 'Elusive Quickhoof'
                 end,
@@ -494,8 +492,8 @@ MWP.MapWaypointList = {
             { 55.0, 73.0, "Elusive Quickhoof 5" },
         },
         {
+            ids = { 1250 },
             check = function ()
-                    if not MWP:MissingMounts(1250) then return end
                     local quests = C_TaskQuest.GetQuestsForPlayerByMapID(864)
                     for _, info in ipairs(quests) do
                         if info.questId == 52196 then return true end
@@ -507,53 +505,60 @@ MWP.MapWaypointList = {
     -- Mac'aree
     [882] = {
         {
-            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48697) end,
+            ids = { 906, 974, 975, 976 },
             { 38.7, 55.8, "Kaara the Pale (Fel-Spotted Egg)" },
         },
         {
-            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48712) end,
+            ids = { 906, 974, 975, 976 },
             { 44.2, 49.8, "Sabuul (Fel-Spotted Egg)" },
         },
         {
-            check = function () return MWP:MissingMounts(973) and not IsQuestFlaggedCompleted(48705) end,
+            ids = { 973 },
+            check = function () return not IsQuestFlaggedCompleted(48705) end,
             { 33.7, 47.5, "Venomtail Skyfin (Lambent Mana Ray)" },
         },
         {
-            check = function () return MWP:MissingMounts(970) and not IsQuestFlaggedCompleted(48695) end,
+            ids = { 970 },
+            check = function () return not IsQuestFlaggedCompleted(48695) end,
             { 55.7, 59.9, "Wrangler Kravos (Maddened Chaosrunner)" },
         },
         {
-            check = function () return MWP:MissingMounts(980) and not IsQuestFlaggedCompleted(48721) end,
+            ids = { 980 },
+            check = function () return not IsQuestFlaggedCompleted(48721) end,
             { 49.7, 9.9, "Skreeg the Devourer (Acid Belcher)" },
         },
     },
     -- Antoran Wastes
     [885] = {
         {
-            check = function () return MWP:MissingMounts(906, 974, 975, 976) and not IsQuestFlaggedCompleted(48812) end,
+            ids = { 906, 974, 975, 976 },
             { 64.3, 48.2, "Varga (Fel-Spotted Egg)" },
         },
         {
-            check = function () return MWP:MissingMounts(979) and not IsQuestFlaggedCompleted(49183) end,
+            ids = { 979 },
+            check = function () return not IsQuestFlaggedCompleted(49183) end,
             { 61.7, 37.2, "Blistermaw (Crimson Slavermaw)" },
         },
         {
-            check = function () return MWP:MissingMounts(955) and not IsQuestFlaggedCompleted(48821) end,
+            ids = { 955 },
+            check = function () return not IsQuestFlaggedCompleted(48821) end,
             { 63.1, 25.2, "Houndmaster Kerrax (Vile Fiend)" },
         },
         {
-            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48810) end,
+            ids = { 981 },
+            check = function () return not IsQuestFlaggedCompleted(48810) end,
             { 53.1, 35.8, "Vrax'thul (Biletooth Gnasher)" },
         },
         {
-            check = function () return MWP:MissingMounts(981) and not IsQuestFlaggedCompleted(48809) end,
+            ids = { 981 },
+            check = function () return not IsQuestFlaggedCompleted(48809) end,
             { 65.6, 26.6, "Puscilla (Biletooth Gnasher)" },
         },
     },
     -- Nazjatar
     [1355] = {
         {
-            check = function () return MWP:MissingMounts(1258) end,
+            ids = { 1258 },
             vignetteScan = function (n) return n:match("Fabious") end,
             namePlateScan = function (unit)
                     return UnitName(unit) == 'Fabious'
@@ -564,7 +569,8 @@ MWP.MapWaypointList = {
             { 78.0, 52.9, "Fabious, Drowned Market" },
         },
         {
-            check = function () return MWP:MissingMounts(1257) and not IsQuestFlaggedCompleted(56298) end,
+            ids = { 1257 },
+            check = function () return not IsQuestFlaggedCompleted(56298) end,
             vignetteScan = function (n) return n:match("Soundless") and not IsQuestFlaggedCompleted(56298) end,
             { 62.4, 59.6, "Soundless (Silent Glider)" },
             { 64.8, 51.8, "Soundless (Silent Glider)" },
@@ -578,12 +584,14 @@ MWP.MapWaypointList = {
     -- Mechagon
     [1462] = {
         {
-            check = function () return MWP:MissingMounts(1248) and not IsQuestFlaggedCompleted(55811) end,
+            ids = { 1248 },
+            check = function () return not IsQuestFlaggedCompleted(55811) end,
             vignetteScan = function (n) return n:match("Rustfeather") and not IsQuestFlaggedCompleted(55811) end,
             { 65.7, 78.3, "Rustfeather (Junkheap Drifter)" },
         },
         {
-            check = function () return MWP:MissingMounts(1229) and not IsQuestFlaggedCompleted(55512) end,
+            ids = { 1229 },
+            check = function () return not IsQuestFlaggedCompleted(55512) end,
             vignetteScan = function (n) return n:match("Arachnoid Harvester") and not IsQuestFlaggedCompleted(55512) end,
             { 52.0, 41.4, "Arachnoid Harvester (Rusty Mechanocrawler)" },
         },
@@ -593,10 +601,9 @@ MWP.MapWaypointList = {
         -- 6486 = Assault: NZoth
         -- 6488 = Assault: Aqir
         {
+            ids = { 1317 },
             check = function ()
-                if not MWP:MissingMounts(1317) or IsQuestFlaggedCompleted(57273) then
-                    return
-                end
+                if IsQuestFlaggedCompleted(57273) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(12) -- Kalimdor
                 return  tContains(poi, -1) -- Assault: Amathet Advance
             end,
@@ -604,13 +611,15 @@ MWP.MapWaypointList = {
             { 68.23, 31.97, "Rotfeaster (Waste Marauder)" },
         },
         {
-            check = function () return MWP:MissingMounts(1314) and not IsQuestFlaggedCompleted(57259) end,
+            ids = { 1314 },
+            check = function () return not IsQuestFlaggedCompleted(57259) end,
             vignetteScan = function (n) return n:match("Ishak of the Four Winds") end,
             { 73.8, 83.6, "Ishak of the Four Winds" },
         },
         {
+            ids = { 1319 },
             check = function ()
-                if not MWP:MissingMounts(1319) or IsQuestFlaggedCompleted(58696) then
+                if IsQuestFlaggedCompleted(58696) then
                     return
                 end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(12) -- Kalimdor
@@ -626,8 +635,9 @@ MWP.MapWaypointList = {
         -- 6490 = Assault: Mogu
         -- 6491 = Assault: Mantid
         {
+            ids = { 1328 },
             check = function ()
-                if not MWP:MissingMounts(1328) or IsQuestFlaggedCompleted(57363) then return end
+                if IsQuestFlaggedCompleted(57363) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
@@ -635,8 +645,9 @@ MWP.MapWaypointList = {
             { 34.1, 68.0, "Anh-De the Loyal (Xinlao)" }
         },
         {
+            ids = { 1327 },
             check = function ()
-                if not MWP:MissingMounts(1327) or IsQuestFlaggedCompleted(57345) then return end
+                if IsQuestFlaggedCompleted(57345) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
@@ -644,8 +655,9 @@ MWP.MapWaypointList = {
             { 12.8, 27.1, "Houndlord Ren (Ren's Stalwart Hound)" }
         },
         {
+            ids = { 1297 },
             check = function ()
-                if not MWP:MissingMounts(1297) or IsQuestFlaggedCompleted(57344) then return end
+                if IsQuestFlaggedCompleted(57344) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
@@ -653,8 +665,8 @@ MWP.MapWaypointList = {
             { 31.8, 41.8, "Ha-Li (Clutch of Ha-Li)" }
         },
         {
+            ids = { 1311 },
             check = function ()
-                if not MWP:MissingMounts(1311) then return end
                 if GetItemCount(174927, false) == 0 then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
@@ -662,8 +674,9 @@ MWP.MapWaypointList = {
             { 26.9, 50.9, "Ivory Cloud Serpent" }
         },
         {
+            ids = { 1313 },
             check = function ()
-                if not MWP:MissingMounts(1313) or IsQuestFlaggedCompleted(57346) then return end
+                if IsQuestFlaggedCompleted(57346) then return end
                 local poi = C_AreaPoiInfo.GetAreaPOIForMap(424) -- Pandaria
                 return  tContains(poi, 6490) -- Assault: Mogu
             end,
