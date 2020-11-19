@@ -80,6 +80,8 @@ function MWP:PLAYER_LOGIN()
     self:RegisterEvent("VIGNETTE_MINIMAP_UPDATED")
     self:RegisterEvent("NAME_PLATE_UNIT_ADDED")
     self:RegisterEvent("PLAYER_TARGET_CHANGED")
+    self:RegisterEvent("QUEST_COMPLETE")
+    self:RegisterEvent("MAIL_CLOSED")
 
     self:UpdateZone()
 
@@ -91,6 +93,8 @@ function MWP:PLAYER_ENTERING_WORLD() self:UpdateZone() end
 function MWP:ZONE_CHANGED() self:UpdateZone() end
 function MWP:ZONE_CHANGED_INDOORS() self:UpdateZone() end
 function MWP:ZONE_CHANGED_NEW_AREA() self:UpdateZone() end
+function MWP:QUEST_COMPLETE() self:UpdateZone() end
+function MWP:MAIL_CLOSED() self:UpdateZone() end
 
 function MWP:NAME_PLATE_UNIT_ADDED(unit)
     local alert = false
